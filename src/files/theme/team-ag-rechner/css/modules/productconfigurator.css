@@ -1,0 +1,128 @@
+
+/* ==========================================================================
+   Product configuration form
+========================================================================== */
+
+.mobile-product-configuration-toggler,
+.mobile-form-values {
+  display: none;
+}
+
+.button.mobile-product-configuration-toggler {
+  border-color: $(c-white);
+  color: $(c-white);
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $(c-white);
+    color: $(c-white);
+  }
+
+  svg {
+    height: 24px;
+    margin-left: 8px;
+    vertical-align: -5px;
+    width: 24px;
+  }
+
+}
+
+.hasteform_productconfigurator_form {
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  label {
+    color: $(c-white);
+
+    /* Hide asterisk as mandatory indicator. */
+    .mandatory {
+      display: none;
+    }
+
+  }
+
+  .form-group-fixed,
+  .form-group-vario {
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    width: 75%;
+
+    .widget {
+      float: left;
+      margin-bottom: 0;
+      width: 33.333%;
+    }
+
+  }
+
+  input[type="text"] {
+    border-color: $(c-white);
+    color: $(c-black);
+
+    &:hover,
+    &:focus {
+      border-color: $(c-white);
+    }
+
+  }
+
+  .select-wrapper {
+    border-color: $(c-white);
+
+    svg {
+      fill: $(c-black);
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $(c-white);
+    }
+
+  }
+
+  .form-group-fixed {
+    margin-bottom: 20px;
+  }
+
+  .submit_container {
+    float: right;
+    margin-top: 29px; /* height and margin of label from other fields. */
+    width: 25%;
+  }
+
+  .submit {
+    border-color: $(c-white);
+    font-size: 1rem;
+    padding-bottom: 6px;
+    padding-top: 7px;
+    width: 100%;
+
+    &:hover {
+        border: 2px solid $(c-white);
+    }
+
+  }
+
+}
+
+/* Case: products are shown in the product list module
+========================================================================== */
+
+.show-product-list-results {
+
+  .hasteform_productconfigurator_form {
+
+    .submit {
+      background-color: $(c-grey-3);
+
+      &.update {
+        background-color: $(c-secondary);
+      }
+
+    }
+
+  }
+
+}

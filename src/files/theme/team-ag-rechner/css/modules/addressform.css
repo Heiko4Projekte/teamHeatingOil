@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Addressform stylings
+========================================================================== */
+
+.mod_calc_addressform {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hasteform_address_form {
+    float: left;
+    width: 50%;
+
+    .form-group {
+        @fragment clearfix;
+        margin-bottom: 50px;
+    }
+
+    .widget {
+        float: none;
+    }
+
+    .form-group-shipping {
+        margin-bottom: 10px;
+    }
+
+    .form-group-billing {
+        display: none;
+    }
+
+    .widget.widget-shippingSalutation {
+        float: left;
+        width: 33.333%;
+    }
+
+    .widget.widget-shippingFirstname {
+        float: left;
+        width: 66.666%;
+    }
+
+    .widget.widget-shippingLastname {
+        clear: both;
+    }
+
+    .widget.widget-shippingPostal {
+        float: left;
+        margin-bottom: 0;
+        width: 33.333%;
+    }
+
+    .widget.widget-shippingCity {
+        float: left;
+        margin-bottom: 0;
+        width: 66.666%;
+    }
+
+    .form-group-shippingAddressEqualsBillingAddress {
+        margin-top: 20px;
+    }
+
+    .widget.widget-shippingAddressEqualsBillingAddress {
+        margin-bottom: 0;
+    }
+
+    .widget.widget-billingSalutation {
+        float: left;
+        width: 33.333%;
+    }
+
+    .widget.widget-billingFirstname {
+        float: left;
+        width: 66.666%;
+    }
+
+    .widget.widget-billingLastname {
+        clear: both;
+    }
+
+    .widget.widget-billingPostal {
+        float: left;
+        width: 33.333%;
+    }
+
+    .widget.widget-billingCity {
+        float: left;
+        width: 66.666%;
+    }
+
+    .widget.widget-notes {
+        margin-bottom: 20px;
+    }
+
+    .widget-acceptAgb legend {
+        display: none;
+    }
+
+    .widget.widget-sendNews {
+        margin-bottom: 0;
+    }
+
+    .submit_container {
+
+        svg {
+            margin-left: 5px;
+        }
+
+    }
+
+}
+
+.pac-container {
+    z-index: 100000;
+
+    /* Hide pin icon. */
+    .pac-icon-marker {
+        display: none;
+    }
+
+}

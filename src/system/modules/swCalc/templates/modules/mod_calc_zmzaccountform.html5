@@ -1,0 +1,105 @@
+
+<!-- indexer::stop -->
+<div class="mod_calc_zmzaccountform block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+
+    <?php if ($this->headline): ?>
+        <<?= $this->hl ?> class="headline form-headline-main"><?= $this->headline ?></<?= $this->hl ?>>
+    <?php endif; ?>
+
+    <?php if ($this->globalErrors): ?>
+        <div class="form-error-box">
+            <div class="inner">
+                <h3 class="form-error-box-headline">Bitte korrigieren Sie Ihre Eingaben.</h3>
+                <?php foreach ($this->globalErrors as $sGroup => $aErrors): ?>
+                    <?php foreach ($aErrors as $aError): ?>
+                        <p>
+                            <strong>„<?php echo $aError['label']; ?>“:</strong> <br>
+                            <?php echo $aError['errorMessage']; ?>
+                        </p>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php echo $this->form; ?>
+
+    <div class="missing-house-number placeholder">
+        Bitte überprüfen Sie Ihre Hausnummer.
+        <span class="icon">{{svg::close}}</span>
+    </div>
+
+</div>
+<!-- indexer::continue -->
+
+<script>
+    !(function($) {
+
+        'use strict';
+
+        var BillingToggler = (function() {
+            var form,
+                toggleCheckbox,
+                toggleGroup;
+
+            var init = function() {
+                form = $('#zmzaccount_form');
+                toggleCheckbox = form.find('input[name="shippingAddressEqualsBillingAddress"].checkbox');
+                toggleGroup = $('.form-group-shippingAddress');
+
+                if (toggleCheckbox.length && toggleGroup.length) {
+                    initCheckboxListener();
+                }
+
+                handleCheckboxToggle();
+            };
+
+            var initCheckboxListener = function() {
+                toggleCheckbox.on('change', function() {
+                    handleCheckboxToggle();
+                });
+            };
+
+            var handleCheckboxToggle = function() {
+                if (toggleCheckbox.prop('checked')) {
+                    hideToggleGroup();
+                } else {
+                    showToggleGroup();
+                }
+            };
+
+            var showToggleGroup = function() {
+                toggleGroup.show();
+            };
+
+            var hideToggleGroup = function() {
+                toggleGroup.hide();
+            };
+
+            return {
+                init: init
+            };
+
+        })();
+
+        BillingToggler.init();
+
+      $('document').ready(function() {
+        var varsShipping = {
+          streetFieldId: 'ctrl_shippingStreet',
+          postalFieldId: 'ctrl_shippingPostal',
+          cityFieldId: 'ctrl_shippingCity'
+        };
+
+        var varsBilling = {
+          streetFieldId: 'ctrl_billingStreet',
+          postalFieldId: 'ctrl_billingPostal',
+          cityFieldId: 'ctrl_billingCity'
+        };
+
+        new AutoCompleter(varsShipping);
+        new AutoCompleter(varsBilling);
+      });
+
+    })(jQuery);
+</script>

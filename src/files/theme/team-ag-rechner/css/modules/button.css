@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Button styling definitions
+========================================================================== */
+
+
+/* General
+========================================================================== */
+
+/* after/before usage is necessary for linear gradient animation, */
+/* see here: https://medium.com/@dave_lunny/animating-css-gradients-using-only-css-d2fd7671e759 */
+
+button,
+.button {
+    @extend .font-smoothing;
+    @include animation();
+    background-color: $(c-secondary);
+    border: 2px solid $(c-secondary);
+    border-radius: $(border-radius)px;
+    box-sizing: border-box;
+    color: $(c-white);
+    display: inline-block;
+    font-family: $(base-font);
+    font-size: .888rem;
+    font-weight: 700;
+    line-height: 1.875;
+    margin: 0;
+    padding: 9px 20px 8px;
+    position: relative;
+    text-decoration: none;
+}
+
+button:hover,
+.button:hover {
+    background-image: linear-gradient(-180deg, #64b32b 0%, #5ba327 100%);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .1), 0 3px 4px 0 rgba(0, 0, 0, .1);
+    color: $(c-white);
+}
+
+button:focus,
+.button:focus,
+button:active,
+.button:active {
+    background-image: none;
+    background-color: #5BA327;
+    border-color: transparent;
+    box-shadow: 0 0 6px 0 rgba(0, 0 ,0 , .2), 0 3px 8px 0 rgba(0, 0, 0, .4);
+    color: $(c-white);
+}
+
+button.active,
+.button.active {
+    border-color: $(c-primary);
+}
+
+button.button-mega,
+.button.button-mega {
+    font-size: 1.333rem;
+    line-height: 1.5;
+    padding: 21px 30px 20px;
+
+    .svg-icon {
+        height: 32px;
+        margin-left: 10px;
+        vertical-align: -7px;
+        width: 32px;
+    }
+
+}
+
+button.button-outline,
+.button-outline {
+    @include animation();
+    background-color: transparent;
+    border-color: $(c-primary);
+    color: $(c-primary);
+
+    &:hover,
+    &:focus {
+        background-image: none;
+         background-color: #fff;
+         box-shadow: 0 0 4px 0 rgba(0, 0, 0, .1), 0 3px 4px 0 rgba(0, 0, 0, .1);
+        color: $(c-primary);
+    }
+
+    &:active {
+        background-image: none;
+        background-color: #fff;
+        border-color: $(c-primary);
+        box-shadow: 0 0 6px 0 rgba(0, 0 ,0 , .2), 0 3px 8px 0 rgba(0, 0, 0, .4);
+        color: $(c-primary);
+    }
+
+}

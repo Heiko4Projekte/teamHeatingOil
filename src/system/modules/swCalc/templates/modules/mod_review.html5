@@ -1,0 +1,76 @@
+<!-- indexer::stop -->
+<div class="mod_review">
+
+    <h1 class="headline"><?php echo $GLOBALS['TL_LANG']['review']['headlineDefault']; ?></h1>
+
+    <div class="main-area">
+        <?php foreach ($this->blocks as $block): ?>
+            <?php echo $block; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <?php echo \Slashworks\SwCalc\Models\Label::getLabel('review.partner'); ?>
+
+    <div class="u_clear"></div>
+
+
+    <?php if ($this->warnings) : ?>
+        <div class="modalError">
+            <script>
+              var ErrorObject = {
+                'modal': 'true',
+                'content':
+                  '<div class="wrapper lightbox-error-template">' +
+                  '<div class="headline"><h1>Es gibt fehlende oder fehlerhafte Einträge in Ihrer Bestellung. Bitte überprüfen Sie die Angaben:</h1></div>' +
+                  '<div class="content modal">' +
+                  '<a class="button" href="<?php echo $this->warnings; ?>">Angaben prüfen</a></div>' +
+                  '</div>',
+              }
+            </script>
+        </div>
+    <?php endif; ?>
+
+</div>
+<!-- indexer::continue -->
+
+<?php $oCollection = \Slashworks\SwCalc\Models\Collection::getCurrent(); ?>
+
+<script>
+  !(function ($) {
+
+    if ($('.confirmation-wrapper').length) {
+      var copy = $('.confirmation-wrapper').first().clone();
+      copy.appendTo($('.ce_checkoutsteps .inner'));
+    }
+
+  })(jQuery);
+  //
+  //function purchase (link) {
+  //  ga('ec:addProduct', {
+  //    'name': '<?php //echo $oCollection->labelGroup; ?>//',
+  //    'price': <?php //echo $oCollection->total; ?>//,
+  //    'quantity': 1,
+  //    'dimension1': '<?php //echo $oCollection->postal; ?>//',
+  //    'dimension2': '<?php //echo $oCollection->oilType; ?>//',
+  //    'dimension3': '<?php //echo $oCollection->shipping; ?>//',
+  //    'dimension4': '<?php //echo $oCollection->payment; ?>//',
+  //    'metric1': <?php //echo $oCollection->amount; ?>//,
+  //    'metric2': <?php //echo $oCollection->unloadingPoints; ?>//,
+  //    'metric3': <?php //echo $oCollection->total; ?>//,
+  //    'metric4': <?php //echo $oCollection->totalPer100; ?>
+  //  })
+  //
+  //  ga('ec:setAction', 'purchase', {
+  //    'id': '<?php //echo $oCollection->id; ?>//',
+  //    'affiliation': 'team energie Gmbh & Co. KG Heizölrechner',
+  //    'revenue': <?php //echo $oCollection->total; ?>//,
+  //    'tax': <?php //echo $oCollection->vat; ?>
+  //  })
+  //
+  //  ga('send', 'pageview', {
+  //    hitCallback: function () {
+  //      document.location = link.getAttribute('href')
+  //    },
+  //  })
+  //}
+</script>

@@ -1,0 +1,202 @@
+<script>
+
+    $('document').ready(function() {
+
+        var Tooltip = (function() {
+            var $postal = $('#ctrl_postal'),
+                $amount = $('#ctrl_amount'),
+                $unloadingPoints = $('#ctrl_unloadingPoints');
+                $payment = $('#ctrl_payment');
+                amountMin = <?php echo $this->amountMin; ?>,
+                amountMax = <?php echo $this->amountMax; ?>;
+
+            /**
+             * Public initialization method.
+             */
+            var init = function() {
+                if ($postal.length) {
+                    initPostalChangeListener();
+                }
+
+                if ($amount.length) {
+                    initAmountChangeListener();
+                }
+
+                if ($unloadingPoints.length) {
+                  initUnloadingPointsChangeListener();
+                }
+
+                if ($payment.length) {
+                  initPaymentChangeListener();
+                }
+
+                checkPayment();
+            };
+
+
+            var checkPayment = function(){
+
+              if ($unloadingPoints.length) {
+                var message = '';
+
+                if($unloadingPoints.val() > 1){
+
+                  $("#ctrl_payment option[value=zmzAccount]").attr('disabled','disabled');
+
+                  console.log($payment.val());
+                  if(!$payment.val()){
+                    message = '<?php echo $GLOBALS['TL_LANG']['ERR']['payment']['zmzinvalid']; ?>'
+                  }
+                }else{
+                  $("#ctrl_payment option[value=zmzAccount]").removeAttr('disabled');
+                }
+
+                check($payment, 'payment', message);
+              }
+
+            };
+
+            /**
+             * Listen to changes in postal field.
+             */
+            var initPostalChangeListener = function() {
+                checkPostal();
+
+                $postal.on('change', function() {
+                    checkPostal();
+                });
+            };
+
+            /**
+             * Listen to changes in amount field.
+             */
+            var initAmountChangeListener = function() {
+                checkAmount();
+
+                $amount.on('change', function() {
+                    checkAmount();
+                });
+            };
+
+            /**
+             * Listen to changes in unloadingPoints field.
+             */
+            var initUnloadingPointsChangeListener = function() {
+              $unloadingPoints.on('change', function() {
+                checkAmount();
+                checkPayment();
+              });
+            };
+
+            /**
+             * Listen to changes in unloadingPoints field.
+             */
+            var initPaymentChangeListener = function() {
+              $payment.on('change', function() {
+                checkPayment();
+              });
+            };
+
+
+            /**
+             * Do checks for postal field.
+             */
+            var checkPostal = function() {
+                var v = $postal.val();
+                var message = '';
+
+                if (!$.isNumeric(v) || v.length != 5) {
+                    message = '<?php echo $GLOBALS['TL_LANG']['ERR']['postal']['invalid']; ?>';
+                } else if (v.length !== 5) {
+                    message = '<?php echo $GLOBALS['TL_LANG']['ERR']['postal']['outOfScope']; ?>';
+                }
+
+                check($postal, 'postal', message);
+            };
+
+            /**
+             * Do checks for amount field.
+             */
+            var checkAmount = function() {
+                var v = $amount.val();
+                var message = '';
+
+                if (!$.isNumeric(v)) {
+                    message = '<?php echo sprintf($GLOBALS['TL_LANG']['ERR']['amount']['invalid'], $this->amountMin, number_format($this->amountMax, 0, '', '.')); ?>';
+                } else if(parseInt(v) < parseInt($unloadingPoints.val()) * <?php echo $this->amountMin; ?>) {
+                  message = '<?php echo sprintf($GLOBALS['TL_LANG']['ERR']['amount']['minForMultipleUnloadingPoints'], number_format($this->amountMin, 0, '', '.')); ?>';
+                } else if (parseInt(v) < amountMin || parseInt(v) > amountMax) {
+                    message = '<?php echo sprintf($GLOBALS['TL_LANG']['ERR']['amount']['outOfScope'], $this->amountMin, number_format($this->amountMax, 0, '', '.')); ?>';
+                }
+
+                check($amount, 'amount', message);
+            };
+
+            /**
+             * Remove and add tooltips from a given element.
+             */
+            var check = function($element, identifier, message) {
+                $element.attr('data-valid', 'true');
+                removeTooltipByIdentifier($element, identifier);
+
+                if (message !== '') {
+                    $element.attr('data-valid', 'false');
+                    createTooltipForElement($element, identifier, message);
+                }
+
+                var submitDisabled = false;
+
+                if ($postal.length) {
+                    if ($postal.attr('data-valid') === 'false') {
+                        submitDisabled = 'true';
+                    }
+                }
+
+                if ($amount.length) {
+                    if ($amount.attr('data-valid') === 'false') {
+                        submitDisabled = 'true';
+                    }
+                }
+
+              if ($payment.length) {
+                if ($payment.attr('data-valid') === 'false') {
+                  submitDisabled = 'true';
+                }
+              }
+
+                $element.parents('form').find('[type="submit"]').attr('disabled', submitDisabled);
+            };
+
+            /**
+             * Remove a tooltip by its identifier.
+             */
+            var removeTooltipByIdentifier = function($element, identifier) {
+                $('.tooltip[data-tooltip-id="' + identifier + '"]').remove();
+            };
+
+            /**
+             * Create a tooltip for an element.
+             */
+            var createTooltipForElement = function($element, identifier, message) {
+                var $tooltip = $('<div class="tooltip" data-tooltip-id="' + identifier + '">' + message + '</div>');
+                $tooltip.appendTo($element.parent('div'));
+
+                // Disable form submission.
+                $element.parents('form').find('[type="submit"]').prop('disabled', true);
+            };
+
+            /**
+             * Public method.
+             */
+            return {
+                init: init
+            };
+
+        })();
+
+        Tooltip.init();
+
+    });
+
+
+</script>

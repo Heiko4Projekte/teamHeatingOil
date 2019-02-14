@@ -1,0 +1,69 @@
+
+.ce_checkoutsteps {
+  background-color: $(c-white);
+  padding-bottom: 30px;
+  padding-top: 30px;
+
+  .inner {
+    display: flex;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+    max-width: $(grid-width)px;
+    width: 100%;
+  }
+
+}
+
+.checkout-step {
+  align-items: center;
+  color: $(c-grey-3);
+  display: flex;
+  margin-right: 30px;
+
+  &.active {
+
+    .checkout-step-number {
+      color: $(c-primary);
+    }
+
+    .checkout-step-name {
+      color: $(c-black);
+      font-weight: 600;
+    }
+
+  }
+
+  &.passed {
+
+    .checkout-step-number {
+      color: $(c-secondary);
+    }
+
+    .checkout-step-name {
+      color: $(c-secondary);
+    }
+
+  }
+
+}
+
+.checkout-step-number {
+  @fragment font-smoothing;
+  border: 1px solid;
+  border-radius: 50%;
+  font-size: 1.333rem;
+  font-weight: 300;
+  height: 50px;
+  line-height: 50px;
+  margin-right: 10px;
+  text-align: center;
+  width: 50px;
+}
+
+.checkout-step-name {
+  font-size: .888rem;
+  line-height: 1.5;
+}

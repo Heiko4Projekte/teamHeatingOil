@@ -1,0 +1,27 @@
+<div class="review-block review-block-tableless<?php if ($this->blockClass): ?> review-block-<?php echo $this->blockClass; ?><?php endif; ?>">
+
+    <div class="review-rows-wrapper">
+        <?php if ($this->headline): ?>
+            <h3 class="review-headline"><?php echo $this->headline; ?></h3>
+        <?php endif; ?>
+        <div class="review-rows">
+            <?php foreach ($this->fields as $field => $value) :?>
+                <div class="review-row review-row-<?php echo $field; ?>">
+                    <div class="value"><?php echo $value; ?></div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <?php if ($this->addCompleteButton): ?>
+        <div class="confirmation-wrapper">
+            <a class="button" href="{{link_url::<?php echo $this->jumpTo; ?>}}">Zahlungspflichtig bestellen
+                {{svg::arrow-right}}</a>
+        </div>
+    <?php elseif($this->changeUrl) :?>
+        <div class="modal">
+            <a class="modal-trigger button button-outline" href="<?php echo $this->changeUrl;?>">Ändern {{svg::chevron-right}}</a>
+        </div>
+    <?php endif; ?>
+
+</div>

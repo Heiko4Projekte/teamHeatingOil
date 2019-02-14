@@ -1,0 +1,20 @@
+
+<!-- indexer::stop -->
+<div class="mod_order">
+
+    <?php echo $this->message; ?>
+
+    <?php if ($this->additionalText): ?>
+        <div class="additional-text">
+            <?php echo $this->additionalText; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->ctaLink): ?>
+        <div class="cta-wrapper">
+            <a class="button" href="<?php echo $this->ctaLink; ?>" target="_blank"><?php echo $this->ctaText; ?></a>
+        </div>
+    <?php endif; ?>
+
+</div>
+<!-- indexer::continue -->

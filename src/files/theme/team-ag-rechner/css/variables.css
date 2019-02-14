@@ -1,0 +1,153 @@
+/* ==========================================================================
+    CSS helpers
+
+    @author         Stefan Beutler
+    @copyright      stefanb@slash-works.de
+    @package        slashbase
+    @description    Define several variables, that are used throughout other
+                    CSS files in the project.
+
+    Table of contents
+    -----------------
+    1. Basic variables
+    2. Extensions
+
+    ========================================================================== */
+
+
+/* ==========================================================================
+	1. Basic Variables
+   ========================================================================== */
+
+
+@set {
+
+    /* layout
+    ========================================================================== */
+
+    grid-columns: 12;
+    grid-gutter: 20;
+    grid-width: 1120;
+
+    v-spacing-base: 10; /* Used as base unit for vertical spacing between elements. */
+
+
+    /* architecture
+    ========================================================================== */
+    border-radius: 2;
+
+
+    /* font
+    ========================================================================== */
+    base-font: 'Open Sans', Verdana, sans-serif; /* Used for standard text. */
+    headline-font: 'Open Sans', Verdana, sans-serif; /* Used for headlines and headline-like elements. */
+
+    base-font-size: 18px;
+
+
+    /* colors
+    ========================================================================== */
+    c-primary: #EC6500;
+    c-secondary: #64B32B;
+
+    c-white: #FFFFFF;
+    c-black: #1A1A1A;
+
+    c-grey-1: #C4C4C4;
+    c-grey-2: #424242;
+    c-grey-3: #9E9E9E;
+
+    c-error: #D0021B;
+
+    c-font: $(c-black);
+
+
+    /* lines
+    ========================================================================== */
+
+    c-border: #BBBBBB;
+    c-border-dark: #777777;
+
+
+    /* backgrounds
+    ========================================================================== */
+
+
+    /* breakpoints
+    ========================================================================== */
+
+    bp-xxl: 1700;
+    bp-xl:  1440;
+    bp-l:   1280;
+    bp-n:   1024;
+    bp-m:    768;
+    bp-s:    480;
+
+}
+
+
+
+/* ==========================================================================
+	2. Extensions
+   ========================================================================== */
+
+/**
+ * Get font-size in em relative to the base font-size.
+ *
+ * Usage:
+ * .my-big-headline { @include fontsize(30); }
+ *
+ */
+@mixin fontsize {
+    font-size: math(#(0) / $(base-font-size))em;
+}
+
+/**
+ * Micro clearfix: Clear all child elements of the selected element.
+ *
+ * Usage:
+ * .clear-children { @fragment clearfix; }
+ *
+ */
+@fragment clearfix {
+    &:after {
+        clear: both;
+        content: " ";
+        display: table;
+    }
+}
+
+/**
+ * Mainly used for making light text on dark backgrounds thinner.
+ *
+ * Usage:
+ * .antialiased-text { @fragment font-smoothing; }
+ *
+ */
+@fragment font-smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * Provide base animation mixin for equal animations.
+ *
+ * Usage:
+ * .element-with-default-animation { @include animation(); }
+ * .element-with-custom-animation  { @include animation(background, 0.5s);
+ *
+ */
+@mixin animation {
+    transition: #(0 all) #(1 .1s) ease-in-out;
+}
+
+/**
+ * Vertical spacing mixin.
+ *
+ * Usage:
+ * .element-with-base-spacing { @include v-spacing(); }
+ * .element-with-custom-spacing { @include v-spacing(4); } -> compiles to 4 * v-spacing-base.
+ */
+@mixin v-spacing {
+    margin-bottom: math(#(0 1) * $(v-spacing-base), px);
+}

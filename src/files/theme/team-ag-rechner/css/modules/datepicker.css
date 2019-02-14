@@ -1,0 +1,84 @@
+
+#ui-datepicker-div {
+  background: #F9F9F9;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.12), 0 15px 10px 0 rgba(0,0,0,0.24);
+  padding: 20px;
+}
+
+.ui-datepicker-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ui-datepicker-prev {
+  order: 1;
+}
+
+.ui-datepicker-title {
+  order: 2;
+}
+
+.ui-datepicker-next {
+  order: 3;
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  cursor: pointer;
+  display: block;
+  margin-top: 7px;
+  text-align: center;
+
+  svg {
+    height: 32px;
+    width: 32px;
+  }
+
+}
+
+.ui-datepicker-title {
+
+  select {
+    @include animation(all, default);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    border: 2px solid $(c-grey-1);
+    border-radius: $(border-radius)px;
+    cursor: pointer;
+    font-family: $(base-font);
+    font-size: .777rem;
+    font-weight: 300;
+    height: auto;
+    line-height: 1.875;
+    margin: 0;
+    padding: 9px 10px 8px;
+    position: relative;
+    width: 85px;
+
+    &:hover,
+    &:focus {
+      border-color: $(c-grey-3);
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, .25), 0 2px 5px 0 rgba(0, 0, 0, .25);
+      outline: none;
+    }
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  .ie select {
+    background-image: none;
+  }
+
+  select + select {
+    margin-left: 10px;
+  }
+
+}
+
+.ui-datepicker-calendar {
+  font-size: .777rem;
+}

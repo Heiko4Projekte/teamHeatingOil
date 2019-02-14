@@ -1,0 +1,39 @@
+
+.loading-spinner {
+  background: rgba(0, 0, 0, .5);
+  bottom: 0;
+  color: $(c-white);
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 1000;
+
+  .inner {
+    @fragment font-smoothing;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  img {
+    height: auto;
+    margin-bottom: 20px;
+    max-width: none;
+    width: 80px;
+  }
+
+  .label {
+    font-size: .888rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+}
+
+#wrapper {
+  @include animation();
+}

@@ -1,0 +1,41 @@
+
+.shopvote-element {
+
+    .stars-bar {
+        margin-bottom: 15px;
+    }
+
+    .stars-bg,
+    .active-stars-bg {
+        height: 36px;
+        width: 173px;
+    }
+
+    .stars-bg {
+        background: url('../../../../../system/modules/swCalc/assets/img/stars-gray.png') 0 0;
+    }
+
+    .active-stars-bg {
+        background: url('../../../../../system/modules/swCalc/assets/img/stars-gold.png') 0 0;
+    }
+
+}
+
+.shopvote-summary {
+    background-color: $(c-white);
+    border: 2px solid #E5E5E5;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    text-align: center;
+
+    .rating {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .rating-counter {
+        font-size: 12px;
+    }
+
+}

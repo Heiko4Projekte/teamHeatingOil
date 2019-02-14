@@ -1,0 +1,100 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+    <table class="mobile-form-values">
+        <tbody>
+        <?php foreach ($this->formFieldValues as $aFormField): ?>
+            <tr>
+                <td class="label">
+                    <?php echo $aFormField['label']; ?>:
+                </td>
+                <td class="value">
+                    <?php echo $aFormField['value']; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <button class="mobile-product-configuration-toggler button button-outline">
+        Auswahl ändern {{svg::edit}}
+    </button>
+
+<?php echo $this->form; ?>
+
+    <script>
+      !(function ($) {
+
+        /**
+         * Update submit button if products are already shown and input changes.
+         * @type {{init}}
+         */
+        var SubmitButtonUpdater = (function() {
+          var $b = $('body');
+          var hasChanged = false;
+
+          var $form,
+            $submit,
+            $textFields,
+            $selectFields,
+            inactiveLabel = 'Preis berechnen',
+            activeLabel = 'Preis neu berechnen';
+
+          var init = function() {
+            if ($b.hasClass('show-product-list-results')) {
+
+              setVariables();
+              initFormFieldListener();
+
+            }
+          };
+
+          var setVariables = function() {
+            $form = $('.hasteform_productconfigurator_form');
+            $submit = $form.find('button.submit');
+            $textFields = $form.find('input[type="text"]');
+            $selectFields = $form.find('select');
+          };
+
+          var initFormFieldListener = function() {
+            $textFields.on('keyup.submitbuttonupdate', function() {
+              triggerChange();
+            });
+
+            $selectFields.on('change.submitbuttonupdate', function() {
+              triggerChange();
+            });
+          };
+
+          var removeFormFieldListener = function() {
+            $textFields.off('keyup.submitbuttonupdate');
+            $selectFields.off('change.submitbuttonupdate');
+          };
+
+          var triggerChange = function() {
+            hasChanged = true;
+
+            updateSubmitButton();
+            removeFormFieldListener();
+          };
+
+          var updateSubmitButton = function() {
+            $submit.html(activeLabel);
+            $submit.addClass('update');
+          };
+
+          return {
+            init: init
+          };
+
+        })();
+
+        $('document').ready(function() {
+          SubmitButtonUpdater.init();
+        });
+
+      })(jQuery)
+    </script>
+
+<?php $this->endblock(); ?>

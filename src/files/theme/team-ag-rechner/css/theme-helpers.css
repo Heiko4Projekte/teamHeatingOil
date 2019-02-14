@@ -1,0 +1,60 @@
+/* ==========================================================================
+    CSS helpers
+
+    @author         Stefan Beutler
+    @copyright      stefanb@slash-works.de
+    @package        slashbase
+    @description    Provides global helper classes that are used by different
+                    elements across the site.
+    ========================================================================== */
+
+
+.centerize {
+    margin: 0 auto;
+}
+
+.stretch {
+    float: left;
+    width: 100%;
+}
+
+.invisible {
+    @name invisible;
+    display: inline;
+    height: 0;
+    left: -1000px;
+    overflow: hidden;
+    position: absolute;
+    top: -1000px;
+    width: 0;
+}
+
+.t-italic {
+    font-style: italic;
+}
+
+.t-right {
+    text-align: right;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.clearfix {
+    @fragment clearfix; /* See variables.css for fragment definition. */
+}
+
+.font-smoothing {
+    @fragment font-smoothing; /* See variables.css for fragment definition. */
+}
+
+/* contao specific class */
+.float_right {
+    float: right;
+}
+
+/* contao specific class */
+.float_left {
+    float: left;
+}

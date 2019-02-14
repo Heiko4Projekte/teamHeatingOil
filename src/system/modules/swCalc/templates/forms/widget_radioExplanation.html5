@@ -1,0 +1,137 @@
+<?php $this->extend('form_row'); ?>
+<?php $this->class .= ' widget-radio-card'; ?>
+
+<?php $this->block('field'); ?>
+
+<?php $labels = \Slashworks\SwCalc\Models\Label::getLabelGroup($this->name); ?>
+
+<fieldset id="ctrl_<?= $this->id ?>" class="radio_container<?php if ($this->class) echo ' ' . $this->class; ?>">
+
+    <?php if ($this->label): ?>
+        <legend>
+            <?php if ($this->mandatory): ?>
+                <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->label; ?><span class="mandatory">*</span>
+            <?php else: ?>
+                <?= $this->label ?>
+            <?php endif; ?>
+        </legend>
+    <?php endif; ?>
+
+    <?php if ($this->hasErrors()): ?>
+        <p class="error"><?= $this->getErrorAsString() ?></p>
+    <?php endif; ?>
+
+    <?php foreach ($this->getOptions() as $i => $option): ?>
+        <?php if ($option['type'] == 'group_start'): ?>
+            <fieldset>
+            <legend><?= $labels[$option['value']]['title'] ?></legend>
+        <?php endif; ?>
+
+        <?php if ($option['type'] == 'option'): ?>
+            <div class="radio-card<?php if ($option['checked']): ?> active<?php endif; ?>">
+                <div class="radio-card-inner">
+                    <div class="top" data-mh="radio_card_top_<?php echo $this->id; ?>">
+                        <div class="title">
+                            <h2><?= $labels[$option['value']]['title'] ?></h2>
+
+                            <?php if ($this->shippingDefinition) : ?>
+                                <h3><?= $GLOBALS['TL_LANG']['tl_calc_collection']['shipping'][$option['value']] ?></h3>
+                            <?php endif; ?>
+
+                            <?php if ($labels[$option['value']]['subline']): ?>
+                                <h3><?= $labels[$option['value']]['subline'] ?></h3>
+                            <?php endif; ?>
+                        </div>
+
+                        <?php if ($labels[$option['value']]['description']) : ?>
+                            <div class="description">
+                                <?= $labels[$option['value']]['description'] ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <input type="radio" name="<?= $option['name'] ?>" id="opt_<?= $option['id'] ?>" class="radio"
+                               value="<?= $option['value'] ?>"<?= $option['checked'] ?><?= $option['attributes'] ?>>
+                    </div>
+
+                    <div class="submit-price-wrapper">
+                        <label id="lbl_<?= $option['id'] ?>" for="opt_<?= $option['id'] ?>" class="submit">
+                            <span class="button">
+                                <span class="chosen">Ausgewählt {{svg::checkmark}}</span>
+                                <span class="choose">Auswählen</span>
+                            </span>
+                        </label>
+
+                        <div class="price-wrapper">
+                            <div class="price-gross">
+                                <?php echo $this->arrOptions[$i]['price']['gross']; ?>&thinsp;/&thinsp;100&thinsp;l
+                            </div>
+                            <div class="price-net">
+                                Netto <?php echo $this->arrOptions[$i]['price']['net']; ?>&thinsp;/&thinsp;100&thinsp;l
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($option['type'] == 'group_end'): ?>
+            </fieldset>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+</fieldset>
+
+<script>
+    !(function ($) {
+
+        var RadioCards = (function () {
+            var fieldset = $('#ctrl_<?php echo $this->id; ?>'),
+                cards = fieldset.find('.radio-card');
+
+            var init = function () {
+                initCardClickListener();
+                registerMatchHeight();
+            };
+
+            var initCardClickListener = function () {
+                cards.on('click', function () {
+                    if (!$(this).hasClass('active')) {
+                        deactivateAllCards();
+                        activateCard($(this));
+                    }
+                });
+            };
+
+            var deactivateAllCards = function () {
+                cards.removeClass('active');
+                cards.find('input').prop('checked', false);
+            };
+
+            var activateCard = function ($card) {
+                $card.addClass('active');
+                $card.find('input').prop('checked', true);
+            };
+
+            var registerMatchHeight = function() {
+
+                // Remove potentially old bindings
+                cards.find('[data-mh]').matchHeight({remove: true});
+
+                // Apply matchHeight,
+                cards.find('[data-mh]').matchHeight();
+            };
+
+            return {
+                init: init
+            };
+
+        })();
+
+        $('document').ready(function () {
+            RadioCards.init();
+        });
+
+    })(jQuery);
+</script>
+
+<?php $this->endblock(); ?>

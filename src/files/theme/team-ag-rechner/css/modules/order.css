@@ -1,0 +1,40 @@
+
+
+.mod_order {
+  padding-left: 0;
+  padding-right: 0;
+
+  h1 {
+    @fragment font-smoothing;
+    box-sizing: border-box;
+    color: $(c-secondary);
+    font-size: 1.777rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.444;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .additional-text {
+    color: $(c-primary);
+    font-size: 1.333rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+    text-align: center;
+  }
+
+  .cta-wrapper {
+    text-align: center;
+  }
+
+}

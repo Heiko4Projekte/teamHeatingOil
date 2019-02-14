@@ -1,0 +1,380 @@
+
+.mod_review {
+  padding-left: 0;
+  padding-right: 0;
+
+  h1 {
+    @fragment font-smoothing;
+    box-sizing: border-box;
+    color: $(c-secondary);
+    font-size: 1.777rem;
+    font-weight: 300;
+    line-height: 1.5;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  h2 {
+    @fragment font-smoothing;
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 50px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+  }
+
+  .main-area {
+    box-sizing: border-box;
+    float: left;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+    width: 75%;
+  }
+
+  .seal-area {
+    box-sizing: border-box;
+    float: right;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+    width: 25%;
+
+    .shopvote-summary {
+      margin-top: -30px; /* Nullify bottom margin of images and place the shopvote area directly after the corresponding seal image. */
+    }
+
+  }
+
+  .modal-trigger {
+
+    svg {
+      height: 24px;
+      vertical-align: -7px;
+      width: 24px;
+    }
+
+  }
+
+  .confirmation-wrapper {
+    margin-left: 55%;
+
+    svg {
+      margin-left: 5px;
+    }
+
+  }
+
+}
+
+.review-block {
+  display: flex;
+  margin-bottom: 30px;
+
+  .confirmation-wrapper {
+    align-self: flex-end;
+    margin-left: 0;
+  }
+
+}
+
+.review-rows-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+}
+
+.review-rows {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.review-row {
+  display: flex;
+  font-size: .888rem;
+  line-height: 1.5;
+  width: 100%;
+
+  .label {
+    box-sizing: border-box;
+    padding-right: math($(grid-gutter)/2, px);
+    width: 40%;
+  }
+
+  .value {
+    box-sizing: border-box;
+    font-weight: 600;
+    margin-left: auto;
+    padding-left: math($(grid-gutter)/2, px);
+    width: 60%;
+  }
+
+}
+
+.review-headline {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.444;
+  margin-bottom: 5px;
+}
+
+.review-row-title {
+
+  .label,
+  .value {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.444;
+  }
+
+}
+
+.review-row-total {
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.review-row-hint {
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+/* Price block */
+.review-block-price {
+
+  .review-rows {
+    padding-right: 60px;
+  }
+
+  .review-row {
+    margin-bottom: 5px;
+  }
+
+  .value {
+    text-align: right;
+  }
+
+  .review-row-with-border {
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .review-row-product {
+    border-bottom-color: #F0F0F0;
+
+    .label,
+    .value {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4444;
+    }
+
+  }
+
+  .review-row-adr,
+  .review-row-net-amount,
+  .review-row-vat {
+    color: #424242;
+    font-size: .7777rem;
+  }
+
+  .review-row-total {
+    border-bottom: 2px solid $(c-secondary);
+    padding-bottom: 10px;
+
+    .label,
+    .value {
+      font-size: .8888rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+  }
+
+  .confirmation-wrapper {
+    align-self: auto;
+    display: flex;
+    flex-direction: column;
+
+    .modal {
+      margin-bottom: auto;
+      margin-right: auto;
+    }
+
+  }
+
+}
+
+.review-row-acceptAgb {
+
+  .label {
+    display: none;
+  }
+
+  .value {
+    font-size: .777rem;
+    line-height: 1.42;
+    padding-left: 0;
+    width: 100%;
+  }
+
+}
+
+
+/* tableless review block */
+.review-block-tableless {
+
+  .label {
+    display: none;
+  }
+
+  .value {
+    font-weight: 400;
+    padding-left: 0;
+    width: 100%;
+  }
+
+}
+
+
+/* Unloading points */
+.review-block-unloading-points {
+
+  .review-row {
+    flex-direction: column;
+    margin-bottom: 6px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .review-row-headline {
+    font-weight: 700;
+  }
+
+}
+
+
+/* Confirmation button in checkout steps module
+========================================================================== */
+
+.ce_checkoutsteps {
+
+  .confirmation-wrapper {
+    margin-left: auto;
+
+    .modal {
+      display: none;
+    }
+
+  }
+
+}
+
+
+/* Seal area
+========================================================================== */
+
+.seal-area {
+  text-align: center;
+
+  img {
+    margin-bottom: 50px;
+  }
+
+}
+
+
+/* Price details overlay
+========================================================================== */
+
+.price-details-template {
+
+  .content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+
+.price-details-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  .label {
+    display: none;
+  }
+
+  th,
+  td {
+    text-align: right;
+
+    &:first-child {
+      text-align: left;
+    }
+
+  }
+
+  th {
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 1rem;
+    line-height: 1.4444;
+    padding-bottom: 10px;
+    padding-top: 0;
+  }
+
+  td {
+    border-bottom: none;
+    font-size: .8888rem;
+    line-height: 1.3333;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+
+  tr:first-child {
+
+    td {
+      padding-top: 10px;
+    }
+
+  }
+
+  .row-antifreeze,
+  .row-adr,
+  .row-subtotal,
+  .row-vat {
+
+    td {
+      font-size: .7777rem;
+      line-height: 1.71;
+    }
+
+  }
+
+  .row-adr,
+  .row-vat {
+
+    td {
+      border-bottom: 1px solid #E5E5E5;
+      padding-bottom: 10px;
+    }
+
+  }
+
+  .row-total {
+
+    td {
+      border-bottom: 2px solid $(c-secondary);
+      font-weight: 700;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+
+  }
+
+}

@@ -1,0 +1,15 @@
+
+<!-- indexer::stop -->
+<div class="<?= $this->class ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+
+    <div class="inner">
+        <?php foreach ($this->steps as $aStep): ?>
+            <div class="checkout-step<?php if ($aStep['class']): ?> <?php echo $aStep['class']; ?><?php endif; ?>">
+                <div class="checkout-step-number"><?php echo $aStep['index']; ?></div>
+                <div class="checkout-step-name"><?php echo $aStep['name']; ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+</div>
+<!-- indexer::continue -->

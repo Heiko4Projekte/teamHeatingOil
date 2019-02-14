@@ -1,0 +1,28 @@
+
+.mod_calc_oiltypeform {
+  padding-left: 0;
+  padding-right: 0;
+
+  .info-text {
+    box-sizing: border-box;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+}
+
+.hasteform_oiltype_form {
+  margin-top: 50px;
+
+  .widget-radio-card {
+    margin-bottom: 0;
+  }
+
+  .submit_container {
+    box-sizing: border-box;
+    margin-top: 50px;
+    padding-left: $(grid-gutter)px;
+    padding-right: $(grid-gutter)px;
+  }
+
+}

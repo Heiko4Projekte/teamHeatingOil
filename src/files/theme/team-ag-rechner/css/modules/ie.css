@@ -1,0 +1,20 @@
+.ie {
+
+  form {
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"] {
+      line-height: 1;
+      min-height: 50px;
+    }
+
+    select {
+      min-height: 46px;
+    }
+
+  }
+
+}

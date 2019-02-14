@@ -1,0 +1,58 @@
+
+<div class="review-block<?php if ($this->blockClass): ?> review-block-<?php echo $this->blockClass; ?><?php endif; ?>">
+
+    <div class="review-rows-wrapper">
+        <div class="review-rows">
+            <div class="review-row review-row-product review-row-with-border">
+                <div class="label">Produkt</div>
+                <div class="value">Preis (gesamt)</div>
+            </div>
+            <div class="review-row review-row-sub-total-per-amount">
+                <div class="label"><?php echo $this->amount; ?>&thinsp;l <?php echo $this->oilType; ?></div>
+                <div class="value"><?php echo $this->fields['subTotalPerAmount']; ?></div>
+            </div>
+            <?php if ($this->antifreeze): ?>
+                <div class="review-row review-row-antifreeze">
+                    <div class="label"><?php echo $this->antifreeze; ?>&thinsp;&times;&thinsp;<?php echo $GLOBALS['tl_calc_collection']['review']['antifreeze']; ?></div>
+                    <div class="value"><?php echo $this->fields['antifreeze']; ?></div>
+                </div>
+            <?php endif; ?>
+            <div class="review-row review-row-adr review-row-with-border">
+                <div class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['adr']; ?></div>
+                <div class="value"><?php echo $this->fields['adrFlat']; ?></div>
+            </div>
+            <div class="review-row review-row-net-amount">
+                <div class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['subtotal']; ?></div>
+                <div class="value"><?php echo $this->fields['subTotal']; ?></div>
+            </div>
+            <div class="review-row review-row-vat review-row-with-border">
+                <div class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['vat']; ?></div>
+                <div class="value"><?php echo $this->fields['vat']; ?></div>
+            </div>
+            <div class="review-row review-row-total">
+                <div class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['total']; ?></div>
+                <div class="value"><?php echo $this->fields['total']; ?></div>
+            </div>
+            <div class="review-row review-row-hint">
+                <p>
+                    <?php echo \Slashworks\SwCalc\Models\Label::getLabel('review.price.hint'); ?>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <?php if ($this->addCompleteButton): ?>
+        <div class="confirmation-wrapper">
+            <div class="modal">
+                <a class="modal-trigger button button-outline button-details" href="<?php echo $this->detailsUrl; ?>">Details {{svg::chevron-right}}</a>
+            </div>
+            <a class="button" href="{{link_url::<?php echo $this->jumpTo; ?>}}">Zahlungspflichtig bestellen
+                {{svg::arrow-right}}</a>
+        </div>
+    <?php elseif($this->changeUrl) :?>
+        <div class="modal">
+            <a class="modal-trigger button button-outline" href="<?php echo $this->changeUrl;?>">Ändern {{svg::chevron-right}}</a>
+        </div>
+    <?php endif; ?>
+
+</div>

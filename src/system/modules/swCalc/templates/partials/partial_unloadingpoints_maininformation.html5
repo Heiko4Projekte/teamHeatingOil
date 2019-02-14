@@ -1,0 +1,17 @@
+<h2 class="widget widget-explanation form-group-headline"><?php echo $this->mainInformation['headline']; ?></h2>
+<div class="main-information">
+    <div class="main-information-address">
+        <p>
+            <?php if ($this->mainInformation['company']): ?><?php echo $this->mainInformation['company']; ?>
+                <br><?php endif; ?>
+            <?php echo $this->mainInformation['name']; ?> <br>
+            <?php echo $this->mainInformation['street']; ?> <br>
+            <?php echo $this->mainInformation['postal']; ?> <?php echo $this->mainInformation['city']; ?>
+        </p>
+    </div>
+    <?php if ($this->changeUrl): ?>
+        <div class="modal main-information-edit">
+            <a class="modal-trigger button button-outline" href="<?php echo $this->changeUrl;?>">Ändern {{svg::chevron-right}}</a>
+        </div>
+    <?php endif; ?>
+</div>

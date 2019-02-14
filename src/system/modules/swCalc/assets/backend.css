@@ -1,0 +1,7 @@
+.header_export_csv {
+  background-image: url('../../../themes/flexible/images/theme_export.gif');
+  background-position: left center;
+  background-repeat: no-repeat;
+  margin-left: 15px;
+  padding: 2px 0 3px 20px;
+}

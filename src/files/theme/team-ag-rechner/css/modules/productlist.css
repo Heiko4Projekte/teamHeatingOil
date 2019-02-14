@@ -1,0 +1,268 @@
+
+.mod_productlist {
+  padding-left: 0;
+  padding-right: 0;
+
+  .footnotes {
+    font-size: .666rem;
+    line-height: 1.5;
+    margin-top: 30px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+}
+
+.productlist-message {
+  @fragment clearfix;
+  padding-left: math($(grid-gutter)/2, px);
+  padding-right: math($(grid-gutter)/2, px);
+
+  h2 {
+    @fragment font-smoothing;
+    color: $(c-secondary);
+    font-size: 1.777rem;
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+
+  .message-text,
+  .message-image {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+  }
+
+  .message-text {
+    padding-right: 20px;
+  }
+
+  .message-image {
+    padding-left: 20px;
+  }
+
+}
+
+.product-list-products-wrapper {
+  @fragment clearfix;
+}
+
+.product-list-product {
+  box-sizing: border-box;
+  float: left;
+  padding-left: math($(grid-gutter)/2, px);
+  padding-right: math($(grid-gutter)/2, px);
+  width: 33.333%;
+}
+
+.product-list-product-inner {
+  @include animation();
+  background-color: $(c-white);
+  box-shadow: 0 0 0 1px #C4C4C4 inset;
+
+  &:hover {
+    box-shadow: 0 0 0 4px $(c-primary) inset, 0 5px 5px 0 rgba(0,0,0,0.05), 0 5px 10px 0 rgba(0,0,0,0.15);
+  }
+
+}
+
+.product-name {
+  font-size: .888rem;
+  font-weight: 600;
+  line-height: 1.375;
+  margin-bottom: 0;
+  padding: 20px;
+  position: relative;
+}
+
+.product-name-short {
+  display: none;
+}
+
+.product-bestseller-seal {
+  @fragment font-smoothing;
+  color: $(c-secondary);
+  font-size: 1.333rem;
+  font-weight: 300;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.product-price-per-100 {
+  align-items: center;
+  background-color: $(c-primary);
+  color: $(c-white);
+  display: flex;
+  padding: 10px 20px;
+
+  .label {
+    font-size: .777rem;
+    font-weight: 300;
+    line-height: 1.357;
+  }
+
+  .value {
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-left: auto;
+  }
+
+}
+
+.product-primary-information {
+  box-sizing: border-box;
+  font-size: .888rem;
+  line-height: 1.5;
+  padding: 20px;
+
+  .value {
+    font-weight: 600;
+    margin-left: auto;
+    text-align: right;
+  }
+
+}
+
+.product-primary-information-row {
+  display: flex;
+}
+
+.product-primary-information-row + .product-primary-information-row {
+  margin-top: 10px;
+}
+
+.product-price {
+  align-items: flex-end;
+  box-sizing: border-box;
+  display: flex;
+  padding: 0 20px 20px;
+
+  .value {
+    font-weight: 600;
+    font-size: 1.333rem;
+    line-height: 1.5;
+    margin-left: auto;
+  }
+
+}
+
+.product-submit-wrapper {
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.product-choose-button {
+  display: block;
+  font-size: .888rem;
+  font-weight: 700;
+  line-height: 1.875;
+  width: 100%;
+
+  svg {
+    height: 24px;
+    vertical-align: -6px;
+    width: 24px;
+  }
+
+}
+
+.product-secondary-information {
+  box-sizing: border-box;
+  font-size: .777rem;
+  line-height: 1.357;
+  padding: 20px 20px 30px;
+
+  .value {
+    font-weight: 600;
+    margin-left: auto;
+    text-align: right;
+  }
+
+}
+
+.product-secondary-information-row {
+  display: flex;
+}
+
+.product-secondary-information-row + .product-secondary-information-row {
+  margin-top: 10px;
+}
+
+.product-benefits {
+  background-color: rgba(0, 0, 0, .03); /* if we would use a solid background color (#C4C4C4) the box-shadow would be not visible in this area. */
+  box-sizing: border-box;
+  font-size: .777rem;
+  padding: 20px;
+
+  .product-benefits-headline {
+    font-size: .888rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    line-height: 1.714;
+    list-style-type: none;
+    padding-left: 12px;
+    position: relative;
+
+    &:before {
+      content: "•";
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+  }
+
+}
+
+
+
+/* Postal not found
+========================================================================== */
+
+.postal-not-found {
+
+  h1 {
+    @fragment font-smoothing;
+    box-sizing: border-box;
+    color: $(c-secondary);
+    font-size: 1.777rem;
+    font-weight: 300;
+    line-height: 1.5;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  p {
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .additional-text {
+    color: $(c-primary);
+    font-size: 1.333rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+    text-align: center;
+  }
+
+  .cta-wrapper {
+    text-align: center;
+  }
+
+}

@@ -1,0 +1,88 @@
+
+/* keep body selector to increase specificity and overwrite default style. */
+body {
+
+  #cboxOverlay {
+    opacity: .5 !important;
+  }
+
+  #cboxContent {
+    background: #fff;
+  }
+
+  #cboxLoadingGraphic {
+    background-image: url("../../img/ajax-loader.gif");
+  }
+
+  #cboxClose {
+    @extend .font-smoothing;
+    @include animation();
+
+    background: transparent;
+    border: 2px solid $(c-black);
+    border-radius: $(border-radius)px;
+    box-sizing: border-box;
+    color: $(c-black);
+    display: inline-block;
+    font-size: .888rem;
+    font-weight: 700;
+    height: auto;
+    line-height: 1.875;
+    margin: 0;
+    padding: 9px 20px 8px;
+    right: calc(math( 1 * 100 / $(grid-columns), %) + 10px); /* width of 1 grid column + half grid gutter width */
+    text-indent: 0;
+    top: 50px;
+    width: auto;
+
+    svg {
+      margin-left: 5px;
+
+      &.label-less {
+        margin-left: 0;
+      }
+
+    }
+
+  }
+
+  #cboxContent {
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .12), 0 15px 10px 0 rgba(0, 0, 0, .24);
+  }
+
+  #cboxLoadedContent {
+    background: #F9F9F9;
+    border: none;
+
+    .wrapper {
+      padding-bottom: 80px;
+      padding-left: math( 1 * 100 / $(grid-columns), %);
+      padding-right: math( 1 * 100 / $(grid-columns), %);
+      padding-top: 50px;
+    }
+
+    .headline {
+      box-sizing: border-box;
+      padding-left: math($(grid-gutter)/2, px);
+      padding-right: math($(grid-gutter)/2, px);
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        @fragment font-smoothing;
+        color: $(c-primary);
+        font-size: 1.777rem;
+        font-weight: 300;
+        line-height: 1.5;
+        margin-bottom: 30px;
+        padding-right: 165px;
+      }
+
+    }
+
+  }
+
+}

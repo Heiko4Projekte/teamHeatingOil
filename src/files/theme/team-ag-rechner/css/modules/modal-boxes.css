@@ -1,0 +1,203 @@
+
+#colorbox {
+
+  .widget-radio {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .submit_container {
+    margin-top: 50px;
+  }
+
+}
+
+/* Modal for oilType form
+========================================================================== */
+
+.oil-type-template {
+
+  .widget.widget-amount,
+  .widget.widget-unloadingPoints {
+    float: left;
+    width: 180px;
+  }
+
+  .widget.widget-radio-card {
+    margin-top: 30px;
+  }
+
+}
+
+
+/* Modal for payment form
+========================================================================== */
+
+.hasteform_birthdayForm {
+
+  .widget.widget-birthday {
+
+    .additional-text {
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 180px;
+    }
+
+  }
+
+}
+
+
+/* Modal for shipping address form
+========================================================================== */
+
+.shipping-address-template {
+  @fragment clearfix;
+
+  .hasteform_shipping {
+    float: left;
+    width: 60%;
+  }
+
+  .widget-explanation {
+    box-sizing: border-box;
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .form-group-shipping_fieldset {
+    @fragment clearfix;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .widget.widget-shippingSalutation,
+  .widget.widget-shippingPostal {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-shippingFirstname,
+  .widget.widget-shippingCity {
+    float: left;
+    width: 66.666%;
+  }
+
+}
+
+
+/* Modal for billing address form
+========================================================================== */
+
+.billing-address-template {
+    @fragment clearfix;
+
+  .hasteform_billing {
+    float: left;
+    width: 60%;
+  }
+
+  .widget-explanation {
+    box-sizing: border-box;
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .form-group-billing_fieldset {
+    @fragment clearfix;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .widget.widget-billingSalutation,
+  .widget.widget-billingPostal {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-billingFirstname,
+  .widget.widget-billingCity {
+    float: left;
+    width: 66.666%;
+  }
+
+}
+
+
+/* Modal for contact form
+========================================================================== */
+
+.contact-template {
+  @fragment clearfix;
+
+  .hasteform_contact {
+    float: left;
+    width: 60%;
+  }
+
+  .widget-explanation {
+    box-sizing: border-box;
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .form-group-contact_fieldset {
+    @fragment clearfix;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+/* Modal for additional information form
+========================================================================== */
+
+.additional-information-template {
+
+  .hasteform_additionalInformationReview {
+    max-width: 560px;
+  }
+
+  .widget-explanation {
+    box-sizing: border-box;
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .form-group-additionalInformationReview_fieldset {
+    @fragment clearfix;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+
+/* Error overlay
+========================================================================== */
+
+.lightbox-error-template {
+
+  .button {
+    margin-left: math($(grid-gutter)/2, px);
+  }
+
+}

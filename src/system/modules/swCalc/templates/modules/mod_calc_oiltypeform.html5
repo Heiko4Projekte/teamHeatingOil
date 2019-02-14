@@ -1,0 +1,19 @@
+
+<!-- indexer::stop -->
+<div class="mod_calc_oiltypeform block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+
+    <?php if ($this->headline): ?>
+        <<?= $this->hl ?> class="headline form-headline-main"><?= $this->headline ?></<?= $this->hl ?>>
+    <?php endif; ?>
+
+    <div class="info-text">
+        <p>
+            <strong>90 Prozent unserer Kunden, die einmal <?php echo Slashworks\SwCalc\Models\Label::getLabel('premium.title'); ?> gekauft haben, kaufen es wieder.</strong> <br>
+            Sie haben das Standard-Heizöl gewählt. Bitte bestätigen Sie die Wahl oder wählen Sie <?php echo Slashworks\SwCalc\Models\Label::getLabel('premium.title'); ?> aus.
+        </p>
+    </div>
+
+    <?php echo $this->form; ?>
+
+</div>
+<!-- indexer::continue -->

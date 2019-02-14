@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bestellung Heizöl</title>
+</head>
+<body>
+
+    <div class="data"><b><?php echo $this->data->orderId; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shippingSalutation; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shippingFirstname; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shippingLastname; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shippingStreet; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shippingPostal; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shippingCity; ?></b></div>
+
+    <div class="data"><b><?php echo $this->data->payment; ?></b></div>
+    <div class="data"><b><?php echo $this->data->shipping; ?></b></div>
+    <div class="data"><b><?php echo $this->data->hose; ?></b></div>
+    <div class="data"><b><?php echo $this->data->tanker; ?></b></div>
+    <div class="data"><b><?php echo $this->data->unloadingpoints; ?></b></div>
+    <div class="data"><b><?php echo $this->data->total; ?></b></div>
+
+</body>
+</html>
+

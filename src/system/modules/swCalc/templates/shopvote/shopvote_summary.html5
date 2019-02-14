@@ -1,0 +1,16 @@
+<div class="shopvote-element shopvote-summary">
+
+    <div class="stars-bar">
+        <div class="stars-bg">
+            <div class="active-stars-bg" style="width: <?php echo $this->ratingPercentage; ?>%;"></div>
+        </div>
+    </div>
+
+    <div class="rating">
+        <?php echo $this->rating; ?> / <?php echo $this->starCount; ?>
+    </div>
+    <div class="rating-counter">
+        aus <?php echo $this->counter; ?> Bewertungen
+    </div>
+
+</div>

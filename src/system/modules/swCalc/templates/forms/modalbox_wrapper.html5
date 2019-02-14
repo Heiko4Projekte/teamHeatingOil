@@ -1,0 +1,31 @@
+<div class="wrapper <?php echo $this->formTemplate; ?>">
+
+    <div class="headline">
+        <h1><?php echo $this->headline; ?></h1>
+    </div>
+
+    <?php if ($this->globalErrors): ?>
+        <div class="form-error-box">
+            <div class="inner">
+                <h3 class="form-error-box-headline">Bitte korrigieren Sie Ihre Eingaben.</h3>
+                <?php foreach ($this->globalErrors as $sGroup => $aErrors): ?>
+                    <?php foreach ($aErrors as $aError): ?>
+                        <p>
+                            <strong>„<?php echo $aError['label']; ?>“:</strong> <br>
+                            <?php echo $aError['errorMessage']; ?>
+                        </p>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <div class="content">
+        <?php echo $this->form; ?>
+    </div>
+
+    <?php if ($this->scripts): ?>
+        <?php echo $this->scripts; ?>
+    <?php endif; ?>
+
+</div>

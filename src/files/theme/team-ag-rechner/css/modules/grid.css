@@ -1,0 +1,128 @@
+/* ==========================================================================
+    Grid system
+
+    @author         Stefan Beutler
+    @copyright      stefanb@slash-works.de
+    @package        slashbase
+    @description    Defines columns and grid behaviour.
+
+    ========================================================================== */
+
+
+/*----------------------------------------------------------------------------
+:Desc Define some standard grid values and prepare use of variables with css crush
+-----------------------------------------------------------------------------*/
+
+.grid {
+    @fragment clearfix;
+    max-width: $(grid-width)px;
+    width: 100%;
+
+    > * {
+        box-sizing: border-box;
+        padding-left: math($(grid-gutter)/2, px);
+        padding-right: math($(grid-gutter)/2, px);
+    }
+}
+
+/* Reset width of nested grids through negative margins. */
+.grid .grid {
+    margin-left: -math($(grid-gutter)/2, px);
+    margin-right: -math($(grid-gutter)/2, px);
+    max-width: none;
+    width: auto;
+}
+
+.grid:after {
+    @fragment clearfix;
+}
+
+.u_1,
+.u_2,
+.u_3,
+.u_4,
+.u_5,
+.u_6,
+.u_7,
+.u_8,
+.u_9,
+.u_10,
+.u_11,
+.u_12,
+.u_col {
+    float: left;
+    min-height: 1px;
+}
+
+/* clear max column */
+.u_$(grid-columns) {
+    float : none;
+    clear: both;
+}
+
+.u_1,
+.u_2,
+.u_3,
+.u_4,
+.u_5,
+.u_6,
+.u_7,
+.u_8,
+.u_9,
+.u_10,
+.u_11,
+.u_12,
+.u_col {
+    box-sizing: border-box;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+}
+
+
+/*----------------------------------------------------------------------------
+:Desc Defines the width of each unit
+-----------------------------------------------------------------------------*/
+
+.u_col  { width: 100%; }
+.u_1    { width: math( 1 * 100 / $(grid-columns), %); }
+.u_2    { width: math( 2 * 100 / $(grid-columns), %); }
+.u_3    { width: math( 3 * 100 / $(grid-columns), %); }
+.u_4    { width: math( 4 * 100 / $(grid-columns), %); }
+.u_5    { width: math( 5 * 100 / $(grid-columns), %); }
+.u_6    { width: math( 6 * 100 / $(grid-columns), %); }
+.u_7    { width: math( 7 * 100 / $(grid-columns), %); }
+.u_8    { width: math( 8 * 100 / $(grid-columns), %); }
+.u_9    { width: math( 9 * 100 / $(grid-columns), %); }
+.u_10   { width: math(10 * 100 / $(grid-columns), %); }
+.u_11   { width: math(11 * 100 / $(grid-columns), %); }
+.u_12   { width: math(12 * 100 / $(grid-columns), %); }
+
+
+/*----------------------------------------------------------------------------
+:Desc Push with the width of units + gutter etc.
+-----------------------------------------------------------------------------*/
+
+.p_1    { margin-left: math( 100 *  1 / $(grid-columns), %); }
+.p_2    { margin-left: math( 100 *  2 / $(grid-columns), %); }
+.p_3    { margin-left: math( 100 *  3 / $(grid-columns), %); }
+.p_4    { margin-left: math( 100 *  4 / $(grid-columns), %); }
+.p_5    { margin-left: math( 100 *  5 / $(grid-columns), %); }
+.p_6    { margin-left: math( 100 *  6 / $(grid-columns), %); }
+.p_7    { margin-left: math( 100 *  7 / $(grid-columns), %); }
+.p_8    { margin-left: math( 100 *  8 / $(grid-columns), %); }
+.p_9    { margin-left: math( 100 *  9 / $(grid-columns), %); }
+.p_10   { margin-left: math( 100 * 10 / $(grid-columns), %); }
+.p_11   { margin-left: math( 100 * 11 / $(grid-columns), %); }
+.p_12   { margin-left: math( 100 * 12 / $(grid-columns), %); }
+
+
+/*----------------------------------------------------------------------------
+: Clear First-Childs
+-----------------------------------------------------------------------------*/
+
+.grid [class^=u_]:first-child,
+.u_12,
+.grid-first,
+.u_clear {
+    clear: both;
+}

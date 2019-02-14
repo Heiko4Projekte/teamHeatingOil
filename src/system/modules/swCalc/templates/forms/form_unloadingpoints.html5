@@ -1,0 +1,136 @@
+<?php
+
+$aAutocompleteFields = array();
+
+/** @var \Contao\Widget $oWidget */
+foreach ($this->widgets as $oWidget) {
+    if (!$oWidget->order) {
+        continue;
+    }
+
+    if ($oWidget->autocompleterValue) {
+        $aAutocompleteFields[$oWidget->order][$oWidget->autocompleterKey] = $oWidget->autocompleterValue;
+    }
+}
+
+?>
+
+<!-- indexer::stop -->
+<?php // Add CSS class "hasteform_address_form" to inherit styling. ?>
+<div class="hasteform_address_form <?= $this->class ?> <?= $this->tableless ? 'tableless' : 'tableform' ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?> data-form-id="form_<?php echo $this->id; ?>">
+
+    <?php if ($this->headline): ?>
+        <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+    <?php endif; ?>
+
+    <form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> id="<?= $this->formId ?>" method="<?= $this->method ?>" enctype="<?= $this->enctype ?>"<?= $this->attributes ?><?= $this->novalidate ?>>
+        <div class="formbody">
+            <?php if ($this->method != 'get'): ?>
+                <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formSubmit ?>">
+                <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+                <?php if ($this->maxFileSize): ?>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="<?= $this->maxFileSize ?>">
+                <?php endif; ?>
+            <?php endif; ?>
+            <?= $this->hidden ?>
+            <?php if (!$this->tableless): ?>
+                <table>
+                    <?= $this->fields ?>
+                </table>
+            <?php else: ?>
+                <?= $this->fields ?>
+            <?php endif; ?>
+        </div>
+    </form>
+
+</div>
+<!-- indexer::continue -->
+
+    <div class="missing-house-number placeholder">
+        Bitte überprüfen Sie Ihre Hausnummer.
+        <span class="icon">{{svg::close}}</span>
+    </div>
+
+<?php if (!empty($aAutocompleteFields)): ?>
+<?php foreach ($aAutocompleteFields as $aAutocompleteField): ?>
+        <script>
+            new AutoCompleter(<?php echo json_encode($aAutocompleteField); ?>);
+        </script>
+<?php endforeach; ?>
+<?php endif; ?>
+
+<script>
+    !(function($) {
+
+      'use strict';
+
+      var AutoCalculator = (function() {
+        var $mainPartialAmount = $('#ctrl_partialAmount');
+        var $subPartialAmounts = $('[name*="partialAmount_"]');
+
+        var init = function() {
+          initBlurListener();
+        };
+
+        var initBlurListener = function() {
+          $mainPartialAmount.on('blur.autocalculate', function() {
+            handleBlurEvent();
+          });
+        };
+
+        var handleBlurEvent = function() {
+          if (subPartialAmountsEmpty()) {
+            evenlyDistributePartialAmounts();
+          } else {
+            disableBlurEvent();
+          }
+        };
+
+        var disableBlurEvent = function() {
+          $mainPartialAmount.off('blur.autocalculate');
+        };
+
+        var subPartialAmountsEmpty = function() {
+          var bIsEmpty = true;
+
+          $subPartialAmounts.each(function(i, el) {
+            if (parseInt(el.value) > 0) {
+              bIsEmpty = false;
+              return false;
+            }
+          });
+
+          return bIsEmpty;
+        };
+
+        var evenlyDistributePartialAmounts = function() {
+          var mainAmount = parseInt($mainPartialAmount.val());
+          var totalAmount = <?php echo \Slashworks\SwCalc\Models\Collection::getCurrent()->amount; ?>;
+
+          var remainder = totalAmount - mainAmount;
+
+          if (remainder > 0) {
+            var splittedAmount = parseInt(remainder / $subPartialAmounts.length);
+
+            if (splittedAmount < <?php echo \Slashworks\SwCalc\Models\Pricing::getMinAmount(); ?>) {
+              splittedAmount = 500;
+            }
+
+            $subPartialAmounts.each(function(i, el) {
+              $(el).val(splittedAmount);
+            });
+          }
+        };
+
+        return {
+          init: init
+        };
+
+      })();
+
+      $('document').ready(function() {
+        AutoCalculator.init();
+      });
+
+    })(jQuery);
+</script>

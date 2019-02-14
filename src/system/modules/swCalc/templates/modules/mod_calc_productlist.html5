@@ -1,0 +1,189 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php $hasBestPrice = false; ?>
+
+<?php if ($this->error) : ?>
+
+    <div class="error-message">
+        <?php echo $this->error; ?>
+    </div>
+
+<?php endif; ?>
+
+<?php if ($this->message) : ?>
+
+    <div class="productlist-message">
+        <?php echo $this->messageHeadline; ?>
+        <div class="message-text">
+            <?php echo $this->messageText; ?>
+        </div>
+        <?php if ($this->messageImage): ?>
+            <div class="message-image">
+                <img src="<?php echo $this->messageImage; ?>">
+            </div>
+        <?php endif; ?>
+    </div>
+
+<?php else : ?>
+
+    <?php if (!empty($this->products)): ?>
+
+        <div class="product-list-products-wrapper" data-module="product-list">
+            <?php /** @var \Slashworks\SwCalc\Models\Product $product */
+            foreach ($this->products as $product): ?>
+                <form action="<?php echo $this->formAction; ?>" method="post" class="product-list-product">
+
+                    <input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formId; ?>">
+                    <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+                    <input type="hidden" name="product" value="<?php echo $product->getConfiguration()->id; ?>">
+                    <input type="hidden" name="position" value="<?php echo $product->position; ?>">
+                    <input type="hidden" name="title" value="<?php echo trim(\Slashworks\SwCalc\Models\Label::getLabel('' . $product->getConfiguration()->labelGroup . '.title')); ?>">
+                    <input type="hidden" name="pricePer100" value="<?php echo $product->getTotalPer100(); ?>">
+                    <input type="hidden" name="price" value="<?php echo $product->getTotal(); ?>">
+
+                    <input type="hidden" name="postal" value="<?php echo $product->getConfiguration()->postal; ?>">
+                    <input type="hidden" name="shippingPostal" value="<?php echo $product->getConfiguration()->postal; ?>">
+                    <input type="hidden" name="amount" value="<?php echo $product->getConfiguration()->amount; ?>">
+                    <input type="hidden" name="unloadingPoints" value="<?php echo $product->getConfiguration()->unloadingPoints; ?>">
+                    <input type="hidden" name="oilType" value="<?php echo $product->getConfiguration()->oilType; ?>">
+                    <input type="hidden" name="shipping" value="<?php echo $product->getConfiguration()->shipping; ?>">
+                    <input type="hidden" name="payment" value="<?php echo $product->getConfiguration()->payment; ?>">
+                    <input type="hidden" name="labelGroup" value="<?php echo $product->getConfiguration()->labelGroup; ?>">
+
+                    <div class="product-list-product-inner">
+                        <div class="header-information">
+                            <h2 class="product-name" data-mh="product_name_<?php echo $this->id; ?>">
+                                <?php // IMPORTANT: Keep the compressed style to prevent a whitespace between the title and the best price '*'. ?>
+                                <?php if (\Slashworks\SwCalc\Models\Label::getLabel($product->getConfiguration()->labelGroup . '.title.short')): ?>
+                                    <span class="product-name-short"><?php echo \Slashworks\SwCalc\Models\Label::getLabel($product->getConfiguration()->labelGroup . '.title.short'); ?></span><?php endif; ?><span class="product-name-default"><?php echo \Slashworks\SwCalc\Models\Label::getLabel($product->getConfiguration()->labelGroup . '.title'); ?></span><?php if ($product->getConfiguration()->isBestPrice()): ?><?php $hasBestPrice = true; ?>*<?php endif; ?>
+                                <?php if ($product->getConfiguration()->getLabelGroup() === 'premium'): ?>
+                                    <span class="product-bestseller-seal">Bestseller</span>
+                                <?php endif; ?>
+                            </h2>
+
+                            <div class="product-price-per-100">
+                                <div class="label">
+                                    Preis 100&thinsp;l inkl. MwSt.:
+                                </div>
+                                <div class="value">
+                                    <?php echo \Slashworks\SwCalc\Classes\Formatter::formatPriceWithCurrency($product->getTotalPer100()); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body-information">
+                            <div class="product-primary-information">
+                                <div class="product-primary-information-row">
+                                    <div class="label">Menge:</div>
+                                    <div class="value">
+                                        <?php echo \Slashworks\SwCalc\Classes\Formatter::formatNumber($product->getConfiguration()->amount); ?>&thinsp;l
+                                    </div>
+                                </div>
+                                <div class="product-primary-information-row">
+                                    <div class="label">Entladestellen:</div>
+                                    <div class="value"><?php echo $GLOBALS['TL_LANG']['tl_calc_collection']['unloadingPoint'][$product->getConfiguration()->unloadingPoints]; ?></div>
+                                </div>
+                                <div class="product-primary-information-row">
+                                    <div class="label">Heizöl-Qualität:</div>
+                                    <div class="value"><?php echo $GLOBALS['TL_LANG']['tl_calc_collection']['oilType'][$product->getConfiguration()->oilType]; ?></div>
+                                </div>
+                            </div>
+
+                            <div class="product-price-submit-wrapper">
+                                <div class="product-price">
+                                    <div class="label">
+                                        Gesamt:
+                                    </div>
+                                    <div class="value">
+                                        <?php echo \Slashworks\SwCalc\Classes\Formatter::formatPriceWithCurrency($product->getTotal()); ?>
+                                    </div>
+                                </div>
+
+                                <div class="product-submit-wrapper">
+                                    <button id="product_choice_<?php echo $product->getConfiguration()->id; ?>" type="submit" class="submit product-choose-button">
+                                        Jetzt kaufen {{svg::chevron-right}}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="product-secondary-information">
+                                <div class="product-secondary-information-row">
+                                    <div class="label">Lieferzeit:</div>
+                                    <div class="value"><?php echo $GLOBALS['TL_LANG']['tl_calc_collection']['shipping'][$product->getConfiguration()->shipping]; ?></div>
+                                </div>
+                                <div class="product-secondary-information-row">
+                                    <div class="label">Zahlung:</div>
+                                    <div class="value"><?php echo $GLOBALS['TL_LANG']['tl_calc_collection']['payment'][$product->getConfiguration()->payment]; ?></div>
+                                </div>
+                                <div class="product-secondary-information-row">
+                                    <div class="label">inkl. ADR und Maut</div>
+                                    <div class="value"><?php echo \Slashworks\SwCalc\Classes\Formatter::formatPriceWithCurrency($product->getAdr()); ?></div>
+                                </div>
+                            </div>
+
+                            <div class="product-benefits" data-mh="benefits_<? echo $this->id; ?>">
+                                <?php echo \Slashworks\SwCalc\Models\Label::getLabel('' .
+                                                                                     $product->getConfiguration()->labelGroup . '.usp'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <?php endforeach; ?>
+        </div>
+
+        <p class="footnotes">
+            <?php if ($hasBestPrice): ?>
+                * Sie erhalten immer unser günstigstes Angebot, sofern alle Leistungsbestandteile inhaltlich und zeitlich mit diesem Angebot identisch sind.
+                <br>
+            <?php endif; ?>
+            Alle Preise inkl. der gesetzlichen MwSt. von 19%.
+        </p>
+
+        <script>
+          function addToCart (button) {
+            $(button).prop('disabled', true)
+            var $form = $(button).parents('form')
+            var name = $form.find('input[name="labelGroup"]').val()
+            var price = $form.find('input[name="price"]').val()
+            var pricePer100 = $form.find('input[name="pricePer100"]').val()
+
+            var postal = $form.find('input[name="postal"]').val()
+            var quantity = $form.find('input[name="amount"]').val()
+            var unloadingPoints = $form.find('input[name="unloadingPoints"]').val()
+            var oilType = $form.find('input[name="oilType"]').val()
+            var shipping = $form.find('input[name="shipping"]').val()
+            var payment = $form.find('input[name="payment"]').val()
+            var total = $form.find('input[name="price"]').val()
+            var totalPer100 = $form.find('input[name="pricePer100"]').val()
+
+            $form.submit()
+
+            // ga('ec:addProduct', {
+            //   'name': name,
+            //   'price': price,
+            //   'quantity': 1,
+            //   'dimension1': postal,
+            //   'dimension2': oilType,
+            //   'dimension3': shipping,
+            //   'dimension4': payment,
+            //   'metric1': quantity,
+            //   'metric2': unloadingPoints,
+            //   'metric3': total,
+            //   'metric4': totalPer100
+            // });
+            //
+            // ga('ec:setAction', 'checkout', {'step': 1});
+            // ga('send', 'pageview', {
+            //   hitCallback: function() {
+            //     $form.submit();
+            //   }
+            // });
+          }
+        </script>
+
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>

@@ -1,0 +1,52 @@
+
+
+.teammember {
+  @fragment clearfix;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+.member-item {
+  box-sizing: border-box;
+  float: left;
+  margin-bottom: 20px;
+  padding-left: math($(grid-gutter)/2, px);
+  padding-right: math($(grid-gutter)/2, px);
+  width: 33.333%;
+
+  &:nth-child(3n+1) {
+    clear: both;
+  }
+
+  img {
+    max-width: none;
+    width: 100%;
+  }
+
+  .content-wrapper {
+    background-color: $(c-white);
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .name {
+    @fragment font-smoothing;
+    color: $(c-primary);
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+
+  .info {
+    font-size: .888rem;
+    line-height: 1.8125;
+
+    a {
+      color: inherit;
+    }
+
+  }
+
+}

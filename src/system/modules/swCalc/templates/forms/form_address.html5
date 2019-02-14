@@ -1,0 +1,146 @@
+
+<!-- indexer::stop -->
+<div class="<?= $this->class ?> <?= $this->tableless ? 'tableless' : 'tableform' ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?> data-form-id="form_<?php echo $this->id; ?>">
+
+    <?php if ($this->headline): ?>
+    <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+<?php endif; ?>
+
+<form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> id="<?= $this->formId ?>" method="<?= $this->method ?>" enctype="<?= $this->enctype ?>"<?= $this->attributes ?><?= $this->novalidate ?>>
+    <div class="formbody">
+        <?php if ($this->method != 'get'): ?>
+            <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formSubmit ?>">
+            <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+            <?php if ($this->maxFileSize): ?>
+                <input type="hidden" name="MAX_FILE_SIZE" value="<?= $this->maxFileSize ?>">
+            <?php endif; ?>
+        <?php endif; ?>
+        <?= $this->hidden ?>
+        <?php if (!$this->tableless): ?>
+            <table>
+                <?= $this->fields ?>
+            </table>
+        <?php else: ?>
+            <?= $this->fields ?>
+        <?php endif; ?>
+    </div>
+</form>
+
+</div>
+<!-- indexer::continue -->
+
+<?php $oCollection = \Slashworks\SwCalc\Models\Collection::getCurrent(); ?>
+
+<script>
+    !(function($) {
+
+        'use strict';
+
+        var ErrorScroller = (function() {
+            var form,
+                errorElements,
+                scrollDuration = 1000;
+
+            var init = function() {
+                form = $('#<?php echo $this->formId; ?>');
+                errorElements = form.find('.widget.error');
+
+                if (errorElements.length) {
+                    scrollToError();
+                }
+            };
+
+            var scrollToError = function() {
+                $('html, body').animate({
+                    scrollTop: errorElements.offset().top
+                }, scrollDuration);
+            };
+
+            return {
+                init: init
+            };
+
+        })();
+
+        var BillingToggler = (function() {
+            var form,
+                toggleCheckbox,
+                toggleGroup;
+
+            var init = function() {
+                form = $('[data-form-id="form_<?php echo $this->id; ?>"]');
+                toggleCheckbox = form.find('input[name="shippingAddressEqualsBillingAddress"].checkbox');
+                toggleGroup = $('.form-group-billing');
+
+                if (toggleCheckbox.length && toggleGroup.length) {
+                    initCheckboxListener();
+                }
+
+                handleCheckboxToggle();
+            };
+
+            var initCheckboxListener = function() {
+                toggleCheckbox.on('change', function() {
+                    handleCheckboxToggle();
+                });
+            };
+
+            var handleCheckboxToggle = function() {
+                if (toggleCheckbox.prop('checked')) {
+                    hideToggleGroup();
+                } else {
+                    showToggleGroup();
+                }
+            };
+
+            var showToggleGroup = function() {
+                toggleGroup.show();
+            };
+
+            var hideToggleGroup = function() {
+                toggleGroup.hide();
+            };
+
+            return {
+                init: init
+            };
+
+        })();
+
+        $('document').ready(function() {
+            BillingToggler.init();
+//            ErrorScroller.init();
+        });
+
+    })(jQuery);
+
+    function checkout(button) {
+      $(button).prop('disabled', true);
+      var $form = document.getElementById('<?php echo $this->formId; ?>');
+
+      $form.submit();
+
+      /*
+      ga('ec:addProduct', {
+        'name': '<?php echo $oCollection->labelGroup; ?>',
+        'price': <?php echo $oCollection->total; ?>,
+        'quantity': 1,
+        'dimension1': '<?php echo $oCollection->postal; ?>',
+        'dimension2': '<?php echo $oCollection->oilType; ?>',
+        'dimension3': '<?php echo $oCollection->shipping; ?>',
+        'dimension4': '<?php echo $oCollection->payment; ?>',
+        'metric1': <?php echo $oCollection->amount; ?>,
+        'metric2': <?php echo $oCollection->unloadingPoints; ?>,
+        'metric3': <?php echo $oCollection->total; ?>,
+        'metric4': <?php echo $oCollection->totalPer100; ?>
+      });
+
+      ga('ec:setAction', 'checkout', {'step': 2});
+      ga('send', 'pageview', {
+        hitCallback: function() {
+          $form.submit();
+        }
+      });
+      */
+    }
+</script>

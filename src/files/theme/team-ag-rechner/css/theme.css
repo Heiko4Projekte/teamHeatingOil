@@ -1,0 +1,413 @@
+
+/* ==========================================================================
+  CSS from slashworks
+   ========================================================================== */
+
+/**
+ * @author Stefan Melz @ slashworks stefan@slash-works.de
+ *
+ * Table of contents
+ * -----------------------------------------
+ * 1. HTML Elements
+ * 2. LAYOUT
+ * 3. CE_ Features
+ * 4. MOD_ Features
+ * 5. MODULES
+ * 6. ELEMENTS
+ */
+
+
+/* ==========================================================================
+	1. HTML Elements
+   ========================================================================== */
+
+html {
+    color: $(c-font);
+    font-family: $(base-font);
+    font-size: $(base-font-size);
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: top; /* Removes bottom margin of img-tag. */
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+/* ==========================================================================
+	2. LAYOUT
+   ========================================================================== */
+
+
+
+
+/* Grid
+========================================================================== */
+
+.grid {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* Header
+========================================================================== */
+
+
+
+
+/* Container
+========================================================================== */
+
+
+/* Top content
+========================================================================== */
+
+.top-row {
+    background-color: $(c-primary);
+    color: $(c-white);
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    .ce_headline {
+        @fragment font-smoothing;
+        box-sizing: border-box;
+        font-size: 1.777rem;
+        font-weight: 300;
+        line-height: 1.5625;
+        margin: 0 auto;
+        max-width: $(grid-width)px;
+        padding-left: math($(grid-gutter)/2, px);
+        padding-right: math($(grid-gutter)/2, px);
+        width: 100%;
+    }
+
+}
+
+
+/* Main
+========================================================================== */
+
+.main-content-start {
+    padding-top: 50px;
+}
+
+.main-content-end {
+    padding-bottom: 50px;
+}
+
+#main {
+    background-color: #F9F9F9;
+}
+
+
+/* Bottom Content
+========================================================================== */
+
+.content-bottom {
+    background-color: $(c-white);
+    padding-bottom: 50px;
+    padding-top: 50px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @fragment font-smoothing;
+        font-size: 1.333rem;
+        font-weight: 300;
+        line-height: 1.5;
+    }
+
+}
+
+
+
+
+
+/* ==========================================================================
+	3. CE_ Features
+   ========================================================================== */
+
+/* Common content elements
+========================================================================== */
+
+[class*="ce_"] {
+
+}
+
+
+
+/* ce_text
+========================================================================== */
+
+.ce_text {
+
+
+
+}
+
+
+/* ce_image
+========================================================================== */
+
+.ce_image {
+
+}
+
+
+
+/* ce_gallery
+========================================================================== */
+
+.ce_gallery {
+
+    ul {
+        @fragment clearfix;
+        margin-bottom: -math($(grid-gutter)/, px);
+        margin-left: -math($(grid-gutter)/2, px);
+        margin-right: -math($(grid-gutter)/2, px);
+        max-width: none;
+        padding: 0;
+        width: auto;
+    }
+
+    li {
+        box-sizing: border-box;
+        float: left;
+        margin-bottom: math($(grid-gutter), px);
+        padding-left: math($(grid-gutter)/2, px);
+        padding-right: math($(grid-gutter)/2, px);
+    }
+
+    img {
+        height: auto;
+        max-width: none;
+        width: 100%;
+    }
+
+    /* 2 images per row */
+    .cols_2 {
+
+        li {
+            width: 50%;
+        }
+
+        li:nth-child(2n+1) {
+            clear: left;
+        }
+
+    }
+
+    /* 3 images per row */
+    .cols_3 {
+
+        li {
+            width: 33.333%;
+        }
+
+        li:nth-child(3n+1) {
+            clear: left;
+        }
+
+    }
+
+    /* 4 images per row */
+    .cols_4 {
+
+        li {
+            width: 25%;
+        }
+
+        li:nth-child(4n+1) {
+            clear: left;
+        }
+
+    }
+
+    /* 5 images per row */
+    .cols_5 {
+
+        li {
+            width: 20%;
+        }
+
+        li:nth-child(5n+1) {
+            clear: left;
+        }
+
+    }
+
+    /* 6 images per row */
+    .cols_6 {
+
+        li {
+            width: 16.6666%;
+        }
+
+        li:nth-child(6n+1) {
+            clear: left;
+        }
+
+    }
+
+}
+
+
+
+/* hyperlinks
+========================================================================== */
+
+
+
+/* lists
+========================================================================== */
+
+
+
+/* forms
+========================================================================== */
+
+.ce_form {
+
+
+}
+
+
+
+/* ce_table
+========================================================================== */
+
+.ce_table {
+
+}
+
+
+
+/* ==========================================================================
+	4. MOD_ Features
+   ========================================================================== */
+
+/* mod_article
+========================================================================== */
+
+.mod_article {
+
+}
+
+
+
+/* ==========================================================================
+	5. MODULES
+   ========================================================================== */
+
+/* SVG elements
+========================================================================== */
+
+.svg-icon {
+    display: inline-block;
+    fill: currentColor;
+    height: 1em;
+    overflow: hidden;
+    vertical-align: -.15em;
+    width: 1em;
+}
+
+
+/* form elements
+========================================================================== */
+
+form {
+
+}
+
+
+
+/* ==========================================================================
+    6. ELEMENTS
+    ========================================================================= */
+
+
+/* Footer trust area
+========================================================================== */
+
+.footer-trust-wrapper {
+    align-items: flex-end;
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer-trust-text,
+.footer-trust-seals {
+    box-sizing: border-box;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+    width: 50%;
+}
+
+.footer-trust-text {
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.footer-trust-seals {
+
+    img {
+        display: block;
+    }
+
+    img + img {
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .shopvote-summary {
+        border: none;
+        padding-left: 10px;
+    }
+
+}
+
+
+/* Missing house number hint / placeholder
+========================================================================== */
+
+.missing-house-number {
+    background: $(c-primary);
+    color: $(c-white);
+    cursor: pointer;
+    display: none;
+    font-size: .75em;
+    line-height: 1;
+    padding: 6px 40px 5px 8px;
+    position: relative;
+
+    .icon {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        svg {
+            fill: $(c-white);
+        }
+
+    }
+
+}

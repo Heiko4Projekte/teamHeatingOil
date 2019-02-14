@@ -1,0 +1,51 @@
+<div class="wrapper price-details-template">
+    <div class="headline">
+        <h1>Preisberechnung im Detail</h1>
+    </div>
+    <div class="content">
+        <table class="price-details-table">
+            <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Preis</th>
+                <th>Einheit</th>
+                <th>Preis (gesamt)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="row-amount">
+                <td><span class="label">Produkt</span> <span class="value"><?php echo $this->amount; ?> L. <?php echo $this->oilType; ?></span></td>
+                <td><span class="label">Preis</span> <span class="value"><?php echo $this->subTotalPer100; ?></span></td>
+                <td><span class="label">Einheit</span> <span class="value">100 L</span></td>
+                <td><span class="label">Preis (gesamt)</span> <span class="value"><?php echo $this->subTotalPerAmount; ?></span></td>
+            </tr>
+            <?php if ($this->antifreeze): ?>
+            <tr class="row-antifreeze">
+                <td><span class="label">Produkt</span> <span class="value"><?php echo $this->antifreezeAmount; ?>&thinsp;&times;&thinsp;<?php echo $GLOBALS['tl_calc_collection']['review']['antifreeze']; ?></span></td>
+                <td><span class="label">Preis</span> <span class="value"><?php echo $this->antifreezePerUnit; ?></span></td>
+                <td><span class="label">Einheit</span> <span class="value"><?php echo $this->antifreezeAmount; ?> Stk.</span></td>
+                <td><span class="label">Preis (gesamt)</span> <span class="value"><?php echo $this->antifreeze; ?></span></td>
+            </tr>
+            <?php endif; ?>
+            <tr class="row-adr">
+                <td><span class="label">Produkt</span> <span class="value"><?php echo $GLOBALS['tl_calc_collection']['review']['adr']; ?></span></td>
+                <td><span class="label">Preis</span> <span class="value"><?php echo $this->adrFlat; ?></span></td>
+                <td><span class="label">Einheit</span> <span class="value">1 Stk.</span></td>
+                <td><span class="label">Preis (gesamt)</span> <span class="value"><?php echo $this->adrFlat; ?></span></td>
+            </tr>
+            <tr class="row-subtotal">
+                <td><span class="label">Produkt</span> <span class="value"><?php echo $GLOBALS['tl_calc_collection']['review']['subtotal']; ?></span></td>
+                <td colspan="3"><span class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['subtotal']; ?></span> <span class="value"><?php echo $this->subTotal; ?></span></td>
+            </tr>
+            <tr class="row-vat">
+                <td><span class="label">Produkt</span> <span class="value"><?php echo $GLOBALS['tl_calc_collection']['review']['vat']; ?></span></td>
+                <td colspan="3"><span class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['vat']; ?></span> <span class="value"><?php echo $this->vat; ?></span></td>
+            </tr>
+            <tr class="row-total">
+                <td><span class="label">Produkt</span> <span class="value"><?php echo $GLOBALS['tl_calc_collection']['review']['total']; ?></span></td>
+                <td colspan="3"><span class="label"><?php echo $GLOBALS['tl_calc_collection']['review']['total']; ?></span> <span class="value"><?php echo $this->total; ?></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

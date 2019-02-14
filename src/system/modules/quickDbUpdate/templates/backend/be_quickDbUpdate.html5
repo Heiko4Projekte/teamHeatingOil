@@ -1,0 +1,5 @@
+<div class="qudb-container">
+
+    <a href="contao/main.php?do=repository_manager&update=database" class="qudb-link"></a>
+
+</div>

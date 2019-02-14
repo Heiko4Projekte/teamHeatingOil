@@ -1,0 +1,51 @@
+<div id="tl_buttons">
+    <a href="<?= $this->href ?>" class="header_back" title="<?= $this->title ?>"><?= $this->button ?></a>
+</div>
+
+<div class="export-csv-wrapper">
+    <h2 class="sub_headline">Bestellungen als CSV-Datei exportieren.</h2>
+
+    <form action="<?php echo $this->action; ?>" class="tl_form" method="post">
+        <div class="tl_formbody_edit">
+            <input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formSubmit; ?>">
+            <input type="hidden" name="REQUEST_TOKEN" value="<?php echo \Contao\RequestToken::get(); ?>">
+
+            <fieldset class="tl_box">
+                <legend>Start- und Enddatum</legend>
+                <div class="w50 wizard">
+                    <h3>
+                        <label for="ctrl_start">Start</label>
+                    </h3>
+                    <?php echo $this->startField; ?>
+                    <?php echo $this->startFieldDatePicker; ?>
+                    <p class="tl_help tl_tip">Nur Bestellungen ab diesem Zeitpunkt berücksichtigen.</p>
+                </div>
+                <div class="w50 wizard">
+                    <h3>
+                        <label for="ctrl_stop">Stop</label>
+                    </h3>
+                    <?php echo $this->stopField; ?>
+                    <?php echo $this->stopFieldDatePicker; ?>
+                    <p class="tl_help tl_tip">Nur Bestellungen bis zu diesem Zeitpunkt berücksichtigen.</p>
+                </div>
+            </fieldset>
+            <fieldset class="tl_box">
+                <legend>Dateiformat</legend>
+                <div class="w50">
+                    <h3>
+                        <label for="file_format_field">Dateiformat</label>
+                    </h3>
+                    <?php echo $this->fileFormatField; ?>
+                    <p class="tl_help tl_tip">Wählen Sie das Dateiformat für den Export aus.</p>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div class="tl_formbody_submit">
+            <div class="tl_submit_container">
+                <?php echo $this->submitField; ?>
+            </div>
+        </div>
+    </form>
+</div>

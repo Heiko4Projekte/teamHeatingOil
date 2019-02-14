@@ -1,0 +1,38 @@
+<div class="review-block review-block-tableless<?php if ($this->blockClass): ?> review-block-<?php echo $this->blockClass; ?><?php endif; ?>">
+
+    <div class="review-rows-wrapper">
+        <?php if ($this->headline): ?>
+            <h3 class="review-headline"><?php echo $this->headline; ?></h3>
+        <?php endif; ?>
+        <div class="review-rows">
+            <?php foreach ($this->fields as $i => $aField) :?>
+                <div class="review-row review-row-<?php echo $i; ?>">
+                    <div class="review-row-headline"><?php echo $aField['headline']; ?></div>
+                    <div class="value">
+                        <p>
+                            <?php if ($aField['unloadingPoint']->shippingCompany): ?><?php echo $aField['unloadingPoint']->shippingCompany; ?><br><?php endif; ?>
+                            <?php echo $GLOBALS['TL_LANG']['tl_calc_collection']['salutation'][$aField['unloadingPoint']->shippingSalutation]; ?> <?php echo $aField['unloadingPoint']->shippingFirstname; ?> <?php echo $aField['unloadingPoint']->shippingLastname; ?><br>
+                            <?php echo $aField['unloadingPoint']->shippingStreet; ?> <br>
+                            <?php echo $aField['unloadingPoint']->shippingPostal; ?> <?php echo $aField['unloadingPoint']->shippingCity; ?> <br>
+                            <?php if ($aField['unloadingPoint']->phone): ?>Tel.: <?php echo $aField['unloadingPoint']->phone; ?><br><?php endif; ?>
+                            <strong>Teilmenge: <?php echo \Slashworks\SwCalc\Classes\Formatter::formatNumber($aField['unloadingPoint']->partialAmount); ?>&thinsp;l <?php echo $aField['oilType']; ?></strong><br>
+                            <?php if ($aField['unloadingPoint']->antifreeze): ?><?php echo $aField['unloadingPoint']->antifreeze; ?>&thinsp;&times;&thinsp;<?php echo $GLOBALS['tl_calc_collection']['review']['antifreeze']; ?><?php endif; ?>
+                        </p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <?php if ($this->addCompleteButton): ?>
+        <div class="confirmation-wrapper">
+            <a class="button" href="{{link_url::<?php echo $this->jumpTo; ?>}}">Zahlungspflichtig bestellen
+                {{svg::arrow-right}}</a>
+        </div>
+    <?php elseif($this->changeUrl) :?>
+        <div class="modal">
+            <a class="modal-trigger button button-outline" href="<?php echo $this->changeUrl;?>">Ändern {{svg::chevron-right}}</a>
+        </div>
+    <?php endif; ?>
+
+</div>

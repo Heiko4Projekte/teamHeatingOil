@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+
+    <symbol id="burger" viewBox="0 0 18 12">
+        <title>Menu</title>
+        <path d="M0 12h18v-2H0v2zm0-5h18V5H0v2zm0-7v2h18V0H0z" fill-rule="evenodd"/>
+    </symbol>
+
+    <symbol id="close" viewBox="0 0 40 40">
+        <title>Close</title>
+        <path d="M23.5 20L34.1 9.4c1-1 1-2.6 0-3.5-1-1-2.6-1-3.5 0L20 16.5 9.4 5.9c-1-1-2.6-1-3.5 0-1 1-1 2.6 0 3.5L16.5 20 5.9 30.6c-1 1-1 2.6 0 3.5 1 1 2.6 1 3.5 0L20 23.5l10.6 10.6c1 1 2.6 1 3.5 0 1-1 1-2.6 0-3.5L23.5 20z"></path>
+    </symbol>
+
+    <symbol id="arrow-down" viewBox="0 0 40 40">
+        <title>Close</title>
+        <path d="M23.5 20L34.1 9.4c1-1 1-2.6 0-3.5-1-1-2.6-1-3.5 0L20 16.5 9.4 5.9c-1-1-2.6-1-3.5 0-1 1-1 2.6 0 3.5L16.5 20 5.9 30.6c-1 1-1 2.6 0 3.5 1 1 2.6 1 3.5 0L20 23.5l10.6 10.6c1 1 2.6 1 3.5 0 1-1 1-2.6 0-3.5L23.5 20z"></path>
+    </symbol>
+
+    <symbol id="checkmark" viewBox="0 0 14 10">
+        <title>checkmark</title>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5 10L0 5.2l1.4-1.4L5 7.3 12.6 0 14 1.3"/>
+    </symbol>
+
+    <symbol id="select-arrows" viewBox="0 0 24 48">
+        <title>select arrows</title>
+        <path clip-rule="evenodd" fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8l-6 6 1.4 1.4 4.6-4.6 4.6 4.6L18 14"/>
+        <path clip-rule="evenodd" fill="none" d="M0 24h24v24H0z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6 32.6L12 37.2l-4.6-4.6L6 34l6 6 6-6"/>
+    </symbol>
+
+    <symbol id="chevron-right" viewBox="0 0 24 24">
+        <title>right</title>
+        <path clip-rule="evenodd" fill="none" d="M0 0h24v24H0z"/>
+        <path clip-rule="evenodd" d="M10 6L8.6 7.4l4.6 4.6-4.6 4.6L10 18l6-6"/>
+    </symbol>
+    <symbol id="chevron-left" viewBox="0 0 24 24">
+        <title>right</title>
+        <path clip-rule="evenodd" fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7 18l1.3-1.4-4.3-4.6L16 7.4 14.7 6 9 12"/>
+    </symbol>
+
+    <symbol id="arrow-right" viewBox="0 0 16 16">
+        <title>right</title>
+        <path clip-rule="evenodd" d="M8 0L6.6 1.4 12.2 7H0v2h12.2l-5.6 5.6L8 16l8-8"/>
+    </symbol>
+
+    <symbol id="edit" viewBox="0 0 24 24">
+        <title>edit</title>
+        <path d="M20.7 7c.4-.4.4-1 0-1.4l-2.3-2.3c-.4-.4-1-.4-1.4 0l-1.8 1.8L19 8.8 20.7 7zM3 17.3V21h3.7L17.8 9.9 14 6.2 3 17.3z" fill-rule="evenodd" clip-rule="evenodd"/>
+    </symbol>
+
+</svg>

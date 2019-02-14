@@ -1,0 +1,26 @@
+{
+  "name": "simplesvgicons",
+  "authors": [
+    "Stefan Beutler <stefanb@slash-works.de>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "f6a88f0b5b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f6a88f0b5bbb58e9fa79326ed92e1c5bdbe20e4b"
+  },
+  "_source": "git@git.slash.works:contaomodules/simplesvgicons.git",
+  "_target": "master",
+  "_originalSource": "git@git.slash.works:contaomodules/simplesvgicons.git"
+}

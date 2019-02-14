@@ -1,0 +1,17 @@
+{
+  "name": "csscrush",
+  "authors": [
+    "Stefan Beutler <stefanb@slash-works.de>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

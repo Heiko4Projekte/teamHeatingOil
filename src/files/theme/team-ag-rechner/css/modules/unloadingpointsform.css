@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Unloadingpoints form stylings
+========================================================================== */
+
+.mod_calc_unloadingpointsform {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hasteform_unloading_points_form {
+    float: left;
+    width: 50%;
+
+    .widget {
+        float: none;
+
+        &.widget-shippingPostal,
+        &.widget-shippingCity {
+            margin-bottom: 10px;
+        }
+
+    }
+
+    .submit_container {
+        margin-top: 30px;
+
+        svg {
+            margin-left: 5px;
+        }
+
+    }
+
+    .widget-phone {
+        clear: both;
+    }
+
+    .form-group-headline {
+        margin-top: 40px;
+    }
+
+    .main-information {
+        display: flex;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .main-information-address {
+        font-size: .888rem;
+        line-height: 1.5;
+    }
+
+    .main-information-edit {
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-top: auto;
+    }
+
+}
+
+.unloadingpoints-main-information {
+
+    .form-group-headline {
+        margin-top: 0;
+    }
+
+}
+
+.oil-type-template {
+
+    .hasteform_unloading_points_form {
+        float: none;
+    }
+
+}

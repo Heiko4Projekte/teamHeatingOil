@@ -1,0 +1,203 @@
+
+.mod_calc_zmzaccountform {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.hasteform_zmzaccount_form {
+  float: left;
+  max-width: 560px;
+
+  .formbody {
+    max-width: 560px;
+  }
+
+  .formbody.grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .form-group {
+    @fragment clearfix;
+    margin-bottom: 50px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .widget {
+    float: none;
+  }
+
+  .form-group-sepa {
+    margin-bottom: 30px;
+  }
+
+  .widget-explanation {
+    box-sizing: border-box;
+    color: $(c-black);
+    font-size: 1.333rem;
+    font-weight: 300;
+    line-height: 1.5;
+    padding-left: math($(grid-gutter)/2, px);
+    padding-right: math($(grid-gutter)/2, px);
+  }
+
+  .form-group-zmzBillingAddress {
+    margin-bottom: 10px;
+  }
+
+  .form-group-shippingAddress {
+    margin-top: -30px;
+  }
+
+  .widget.widget-billingSalutation {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-billingFirstname {
+    float: left;
+    width: 66.666%;
+  }
+
+  .widget.widget-zmzChildSalutation {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-zmzChildFirstname {
+    float: left;
+    width: 66.666%;
+  }
+
+  .widget.widget-billingPostal {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-billingCity {
+    float: left;
+    width: 66.666%;
+  }
+
+  .widget.widget-shippingSalutation {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-shippingFirstname {
+    float: left;
+    width: 66.666%;
+  }
+
+  .widget.widget-shippingPostal {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-shippingCity {
+    float: left;
+    width: 66.666%;
+  }
+
+  .widget.widget-sepaSalutation {
+    float: left;
+    width: 33.333%;
+  }
+
+  .widget.widget-sepaFirstname {
+    float: left;
+    width: 66.666%;
+  }
+
+  .widget.widget-yearlyAmount,
+  .widget.widget-yearlyPrice {
+    float: left;
+    width: 50%;
+  }
+
+  .widget.widget-billingLastname,
+  .widget.widget-zmzChildLastname,
+  .widget.widget-sepaLastname {
+    clear: left;
+  }
+
+
+  .sepaExplanation {
+    margin-bottom: 30px;
+
+    p {
+      font-size: .888rem;
+      line-height: 1.5;
+    }
+
+  }
+
+  .widget.widget-sepaRecurringPayment {
+    margin-top: 20px;
+  }
+
+  .widget.widget-sepaAcceptPayment {
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+
+  .sepaInstructions {
+    margin-bottom: 20px;
+
+    p {
+      font-size: .777rem;
+      line-height: 1.357;
+    }
+
+    ol {
+      counter-reset: sepaInstructions;
+      font-size: .666rem;
+      line-height: 1.333;
+      margin: 10px 0 0;
+      padding: 0;
+
+      li {
+        counter-increment: sepaInstructions;
+        margin-bottom: 10px;
+        padding-left: 30px;
+        position: relative;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:before {
+          content: counter(sepaInstructions) ".";
+          left: 0;
+          position: absolute;
+        }
+
+      }
+
+    }
+  }
+
+  .widget.widget-acceptAgb {
+    margin-bottom: 0;
+  }
+
+  .widget-acceptAgb {
+
+    legend {
+      display: none;
+    }
+
+  }
+
+  .submit_container {
+
+    svg {
+      height: 24px;
+      vertical-align: -6px;
+      width: 24px;
+    }
+
+  }
+
+}

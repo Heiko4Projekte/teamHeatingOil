@@ -1,0 +1,20 @@
+<div class="teammember">
+
+    <?php foreach($this->data as $member) :?>
+        <div class="member-item">
+            <?php if($member['imagePath']):?>
+                <div class="img"><img src="<?php echo $member['imagePath'];?>"></div>
+            <?php endif; ?>
+            <div class="content-wrapper">
+                <div class="name"><?php echo $member['first_name'];?> <?php echo $member['last_name']; ?></div>
+                <!-- <?php echo $member['testimage']; ?> -->
+                <div class="info">
+                    <a href="mailto:<?php echo $member['email_address'];?>"><?php echo $member['email_address'];?></a><br>
+                    Tel. <?php echo $member['phone_number'];?><br>
+                    Fax. <?php echo $member['fax_number'];?><br>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+</div>

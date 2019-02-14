@@ -1,0 +1,181 @@
+<?php global $objPage; ?>
+<!DOCTYPE html>
+<html lang="<?= $this->language ?>"<?php if ($this->isRTL): ?> dir="rtl"<?php endif; ?>>
+
+<head>
+
+    <?php $this->block('head'); ?>
+    <meta charset="<?= $this->charset ?>">
+    <title><?= $this->title ?></title>
+    <base href="<?= $this->base ?>">
+
+    <?php $this->block('meta'); ?>
+    <meta name="robots" content="<?= $this->robots ?>">
+    <meta name="description" content="<?= $this->description ?>">
+    <meta name="keywords" content="<?= $this->keywords ?>">
+    <meta name="generator" content="Contao Open Source CMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php $this->endblock(); ?>
+    <?= $this->viewport ?>
+    <?= $this->framework ?>
+    <?= $this->stylesheets ?>
+
+    <?= $this->mooScripts ?>
+    <?= $this->head ?>
+
+    <?php $this->block('html5shiv'); ?>
+    <!--[if lt IE 9]>
+    <script src="<?= TL_ASSETS_URL ?>assets/html5shiv/<?= $GLOBALS['TL_ASSETS']['HTML5SHIV'] ?>/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <?php $this->endblock(); ?>
+    <?php $this->endblock(); ?>
+
+    <!-- Fill the Tagmanager Data Layer -->
+    <?php
+        global $objPage;
+        $gtDataLayer = $objPage->collectionData;
+    ?>
+    <script>
+        dataLayer =
+        [{
+            'value': <?php echo $gtDataLayer['amount']; ?>, // The amount has to be given with a key of 'value'
+            // Iterate over each collection data entry.
+            <?php foreach ($gtDataLayer as $key => $value): ?>
+                '<?php echo $key; ?>': '<?php echo $value; ?>',
+            <?php endforeach; ?>
+            'transaction_id': '<?php echo $gtDataLayer['orderId']; ?>'
+        }];
+    </script>
+    <!-- ende filling Tagmanager data layer -->
+
+    <!-- Google Tag Manager -->
+    <?php $oConfiguration = \Slashworks\SwCalc\Models\Configuration::getActive(); ?>
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js',
+        })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', '<?php echo $oConfiguration->google_id; ?>')</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body id="top" class="{{ua::class}}<?php if ($this->class) {
+    echo ' ' . $this->class;
+} ?>"<?php if ($this->onload): ?> onload="<?= $this->onload ?>"<?php endif; ?>>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $oConfiguration->google_id; ?>'"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<?php echo \Slashworks\SwCalc\Models\Label::getLabel('template.shopvoteBadge'); ?>
+
+<?php $this->block('body'); ?>
+
+<div id="wrapper">
+
+    <div class="menu main-navigation">
+        <?php echo \Slashworks\SwCalc\Models\Label::getLabel('template.menu'); ?>
+    </div>
+
+    <?php $this->block('header'); ?>
+    <?php if ($this->header): ?>
+        <header id="header">
+            <div class="inside">
+                <?= $this->header ?>
+            </div>
+        </header>
+    <?php endif; ?>
+    <?php $this->endblock(); ?>
+
+    <?php $this->block('container'); ?>
+    <div id="container">
+
+        <?php if ($this->sections['content-top']): ?>
+            <div class="content-top">
+                <?php echo $this->sections['content-top']; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php $this->block('main'); ?>
+        <div id="main">
+            <div class="inside">
+                <?= $this->main ?>
+            </div>
+        </div>
+        <?php $this->endblock(); ?>
+
+        <?php $this->block('left'); ?>
+        <?php if ($this->left): ?>
+            <aside id="left">
+                <div class="inside">
+                    <?= $this->left ?>
+                </div>
+            </aside>
+        <?php endif; ?>
+        <?php $this->endblock(); ?>
+
+        <?php $this->block('right'); ?>
+        <?php if ($this->right): ?>
+            <aside id="right">
+                <div class="inside">
+                    <?= $this->right ?>
+                </div>
+            </aside>
+        <?php endif; ?>
+        <?php $this->endblock(); ?>
+
+        <?php if ($this->sections['content-bottom']): ?>
+            <div class="content-bottom">
+                <?php echo $this->sections['content-bottom']; ?>
+            </div>
+        <?php endif; ?>
+
+    </div>
+    <?php $this->endblock(); ?>
+
+    <div class="footer-navigation">
+        <div class="inside">
+            <?php echo \Slashworks\SwCalc\Models\Label::getLabel('template.footer'); ?>
+        </div>
+    </div>
+
+    <?php $this->block('footer'); ?>
+    <?php if ($this->footer): ?>
+        <footer id="footer">
+            <div class="inside">
+                <?= $this->footer ?>
+            </div>
+        </footer>
+    <?php endif; ?>
+    <?php $this->endblock(); ?>
+
+</div>
+
+<div class="loading-spinner">
+    <div class="inner">
+        <img src="<?php TL_ASSETS_URL; ?>files/theme/team-ag-rechner/img/loading-spinner.svg">
+        <div class="label">Ihre Daten werden aktualisiert</div>
+    </div>
+</div>
+
+<?php $this->endblock(); ?>
+
+<?= $this->mootools ?>
+
+
+
+<?php
+// Generates a rich snippet for shopvote review of team.
+//$oShopVote = new \Slashworks\SwCalc\Helper\Shopvote();
+//echo $oShopVote->generateRichSnippetData();
+?>
+
+</body>
+</html>
